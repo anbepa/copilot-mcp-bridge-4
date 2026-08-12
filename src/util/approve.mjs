@@ -61,11 +61,12 @@ async function buildPreview(step, roots) {
   return null;
 }
 
-function ask(question) {
+function ask(question, { raw = false } = {}) {
   return new Promise((resolve) => {
     const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
     rl.question(question, (a) => {
       rl.close();
+      if (raw) return resolve(a);
       resolve(/^(s|si|sí|y|yes)$/i.test(a.trim()));
     });
   });

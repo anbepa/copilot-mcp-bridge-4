@@ -68,6 +68,7 @@ ${color.bold('OPCIONES DE run')}
   --max-turns <n>           Presupuesto de turnos                        [8]
   --max-seconds <n>         Límite de tiempo total en segundos         [900]
   --yes                     Auto-aprueba escrituras ${color.yellow('(solo demos)')}
+  --interactive, --chat     Modo chat: responde en la terminal cuando Copilot pregunte
   --headless                Sin ventana ${color.gray('(requiere sesión ya guardada)')}
   --headed                  Fuerza mostrar la ventana
   --profile <ruta>          Perfil del navegador   [~/.copilot-mcp-bridge/browser-profile]
@@ -290,6 +291,8 @@ async function run() {
   const cfg = loadConfig(overrides);
   const driverKind = String(flag('driver', cfg.driver.kind));
   const autoYes = !!flag('yes', false);
+  const interactive = !!(flag('interactive', false) || flag('chat', false));
+  cfg.interactive = interactive;
 
   log.banner('COPILOT ⇄ MCP BRIDGE');
   log.info(`tarea    : ${task}`);
@@ -304,6 +307,7 @@ async function run() {
     }
   }
   if (autoYes) log.warn('--yes activo: las escrituras NO pedirán confirmación');
+  if (interactive) log.info('modo interactivo (chat): podrás responder cuando Copilot pregunte');
 
   const audit = new Audit(cfg.audit);
   audit.record('task_start', { task, driver: driverKind, roots: cfg.sandbox.roots });

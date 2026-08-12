@@ -121,3 +121,18 @@ export function buildDeniedPrompt(denials) {
     'Algunas acciones fueron BLOQUEADAS por la política local o rechazadas por el usuario. No insistas con la misma acción: replantea usando solo rutas dentro del sandbox y herramientas permitidas, o emite ```mcp-done explicando qué no se pudo hacer.'
   ].join('\n');
 }
+
+/**
+ * Respuesta del usuario a un ```mcp-ask en modo interactivo.
+ * Reinyecta la decisión humana para que Copilot continúe el ciclo.
+ */
+export function buildUserReplyPrompt(answer) {
+  return [
+    '```mcp-user',
+    JSON.stringify({ user: answer }, null, 2),
+    '```',
+    '',
+    'El usuario ha respondido a tu pregunta anterior (arriba). Continúa la tarea teniendo en cuenta su respuesta: emite ```mcp-plan con los siguientes pasos, ```mcp-ask si necesitas otra decisión, o ```mcp-done si ya está todo. Sin texto fuera del bloque.'
+  ].join('\n');
+}
+

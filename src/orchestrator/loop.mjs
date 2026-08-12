@@ -9,10 +9,11 @@
  */
 import { parseReply, renderBlock } from '../protocol/blocks.mjs';
 import { validatePlan, validateAction } from '../protocol/validate.mjs';
-import { buildBootstrapPrompt, buildResultsPrompt, buildRepairPrompt } from '../protocol/prompt.mjs';
+import { buildBootstrapPrompt, buildResultsPrompt, buildRepairPrompt, buildUserReplyPrompt } from '../protocol/prompt.mjs';
 import { Budget } from './budget.mjs';
 import { PlanExecutor } from './executor.mjs';
 import { log, color } from '../log.mjs';
+import { ask } from '../util/approve.mjs';
 
 export class Orchestrator {
   #failedSignatures;
@@ -26,6 +27,7 @@ export class Orchestrator {
     this.audit = audit;
     this.contextPack = contextPack;
     this.roots = roots;
+    this.interactive = !!config.interactive;
     /** Firmas de pasos fallidos → nº de intentos. Detecta bucles de reintento. */
     this.#failedSignatures = new Map();
     this.budget = new Budget(config.budget);
@@ -95,9 +97,29 @@ export class Orchestrator {
 
       // ── ASK ──
       if (parsed.kind === 'ask') {
+        const question = parsed.value?.question ?? '(sin pregunta)';
         log.banner('COPILOT NECESITA UNA DECISIÓN');
-        process.stdout.write(color.yellow(parsed.value?.question ?? '(sin pregunta)') + '\n');
-        return this.#finish('ask', parsed.value?.question ?? '', filesChanged);
+        process.stdout.write(color.yellow(question) + '\n');
+
+        // Modo interactivo (tipo chat): en vez de terminar, preguntamos al
+        // usuario en la terminal y reinyectamos su respuesta para continuar.
+        if (this.interactive) {
+          const answer = await ask(
+            `\n${color.bold('Tu respuesta')} ${color.gray('(escribe "salir" para terminar)')}: `,
+            { raw: true }
+          );
+          const trimmed = (answer ?? '').trim();
+          if (!trimmed || /^(salir|exit|quit|q|stop|terminar)$/i.test(trimmed)) {
+            log.info('Sesión interactiva finalizada por el usuario.');
+            return this.#finish('ask', question, filesChanged);
+          }
+          this.audit.record('user_reply', { turn, question, answer: trimmed });
+          message = buildUserReplyPrompt(trimmed);
+          attachment = null;
+          continue;
+        }
+
+        return this.#finish('ask', question, filesChanged);
       }
 
       // ── PLAN / ACTION ──

@@ -177,14 +177,31 @@ export class PlaywrightDriver {
       log.warn('Selector de modelos no encontrado; se usa el modelo por defecto del tenant.');
       return false;
     }
+
+    // Si ya está seleccionado el modelo que queremos, no toques nada.
+    const actual = await this.#currentModelLabel(btn);
+    if (actual && this.#sameModel(actual, modelo)) {
+      this.modelSelected = true;
+      log.ok(`Modelo ya activo: ${color.bold(actual)}`);
+      return true;
+    }
+
     await btn.click();
     await this.page.waitForTimeout(800); // Espera a que el menú se despliegue
 
+    // El grupo "GPT" suele ser un submenú flyout que se abre por HOVER, no por
+    // clic (al hacer clic a veces se cierra). Probamos hover y, si hace falta, clic.
     const submenu = this.page.locator(SEL.modelSubmenu(MODEL_GROUP)).first();
     try {
       await submenu.waitFor({ state: 'visible', timeout: 5000 });
-      await submenu.click();
-      await this.page.waitForTimeout(500); // Espera a que el submenú se abra
+      await submenu.hover();
+      await this.page.waitForTimeout(400);
+      // Si tras el hover la opción aún no aparece, intentamos clic para expandir.
+      const optProbe = this.page.locator(SEL.modelOption(modelo)).first();
+      if (!(await optProbe.isVisible().catch(() => false))) {
+        await submenu.click().catch(() => {});
+        await this.page.waitForTimeout(500);
+      }
     } catch {
       log.debug('Sin submenú GPT; puede que las opciones sean planas.');
     }
@@ -192,11 +209,15 @@ export class PlaywrightDriver {
     const opcion = this.page.locator(SEL.modelOption(modelo)).first();
     try {
       await opcion.waitFor({ state: 'visible', timeout: 5000 });
+      await opcion.scrollIntoViewIfNeeded().catch(() => {});
       await opcion.click();
       await this.page.waitForTimeout(800); // Estabilización tras selección
-      this.modelSelected = true;
-      log.ok(`Modelo: ${color.bold(modelo)}`);
-      return true;
+      if (await this.#verifyModel(btn, modelo)) {
+        this.modelSelected = true;
+        log.ok(`Modelo: ${color.bold(modelo)}`);
+        return true;
+      }
+      log.debug('Clic hecho pero la verificación no confirmó el cambio; reintentando por coincidencia.');
     } catch {
       // Antes de rendirnos: puede ser que el nombre difiera en mayúsculas o
       // espacios ("GPT 5.6 Think" vs "GPT-5.6 Think"). Comparamos normalizado.
@@ -208,6 +229,7 @@ export class PlaywrightDriver {
       if (parecido) {
         try {
           await this.page.locator(SEL.modelOption(parecido)).first().click({ timeout: 4000 });
+          await this.page.waitForTimeout(800);
           this.modelSelected = true;
           log.ok(`Modelo: ${color.bold(parecido)}`);
           if (parecido !== modelo) log.debug(`(pediste "${modelo}"; el menú lo llama "${parecido}")`);
@@ -235,6 +257,45 @@ export class PlaywrightDriver {
     } catch {
       return [];
     }
+  }
+
+  /** Compara dos nombres de modelo ignorando espacios, guiones y mayúsculas. */
+  #sameModel(a, b) {
+    const norm = (s) => (s || '').toLowerCase().replace(/[\s\-_.]+/g, '');
+    return norm(a) === norm(b) || norm(a).includes(norm(b)) || norm(b).includes(norm(a));
+  }
+
+  /** Lee la etiqueta del modelo actualmente activo desde el botón selector. */
+  async #currentModelLabel(btn) {
+    try {
+      const aria = (await btn.getAttribute('aria-label')) || '';
+      const txt = (await btn.innerText().catch(() => '')) || '';
+      // El aria-label suele ser "Selector de modelos"; el texto visible lleva el modelo.
+      const raw = `${txt} ${aria}`.trim();
+      return raw.split('\n')[0].trim();
+    } catch {
+      return '';
+    }
+  }
+
+  /**
+   * Verifica que el modelo realmente quedó seleccionado. Reabre el menú y
+   * comprueba qué opción tiene aria-checked="true"; si no, cae al texto del botón.
+   */
+  async #verifyModel(btn, modelo) {
+    // 1) Vía fiable: el radio marcado en el menú (si sigue abierto o al reabrir).
+    try {
+      const checked = await this.page
+        .locator('[role="menuitemradio"][aria-checked="true"]')
+        .first()
+        .innerText({ timeout: 1500 });
+      if (checked) return this.#sameModel(checked.split('\n')[0], modelo);
+    } catch {}
+    // 2) Respaldo: el texto del propio botón selector.
+    const label = await this.#currentModelLabel(btn);
+    if (label && this.#sameModel(label, modelo)) return true;
+    // 3) Sin evidencia clara: no afirmamos éxito.
+    return false;
   }
 
   /**

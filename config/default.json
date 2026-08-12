@@ -75,7 +75,7 @@
           "MCP_LOG_LEVEL": "info",
           "MCP_ENABLE_TERMINAL": "true",
           "MCP_ENABLE_BROWSER": "true",
-          "MCP_BROWSER_HEADLESS": "true"
+          "MCP_BROWSER_HEADLESS": "false"
         },
         "enabled": true
       }
