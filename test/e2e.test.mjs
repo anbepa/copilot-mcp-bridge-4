@@ -7,6 +7,7 @@ import assert from 'node:assert/strict';
 import path from 'node:path';
 import fs from 'node:fs';
 import os from 'node:os';
+import { execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { McpHost } from '../src/mcp/host.mjs';
 import { PolicyEngine } from '../src/policy/engine.mjs';
@@ -19,6 +20,21 @@ import { setLevel } from '../src/log.mjs';
 setLevel('silent');
 
 const PROJECT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const STDIO_SERVER = './mcp-unified-server 3/stdio_server.py';
+
+function detectPython() {
+  for (const cmd of ['python3', 'python']) {
+    try {
+      execSync(`${cmd} --version`, { stdio: 'ignore' });
+      return cmd;
+    } catch {}
+  }
+  return null;
+}
+
+const PYTHON = detectPython();
+// Sin Python el server unificado no arranca: saltamos la suite E2E completa.
+const t = PYTHON ? test : test.skip;
 let tmpRoot, host, audit;
 
 const CFG = {
@@ -33,8 +49,9 @@ before(async () => {
   fs.writeFileSync(path.join(tmpRoot, 'src', 'index.js'), '// TODO: manejar errores de conexion\nexport async function main() {}\n');
   fs.writeFileSync(path.join(tmpRoot, 'package.json'), '{"name":"e2e"}');
 
+  if (!PYTHON) return;
   host = new McpHost({
-    servers: { fs: { command: 'node', args: ['./src/mcp/servers/fs-server.mjs', '{{ROOTS}}'] } },
+    servers: { unified: { command: PYTHON, args: [STDIO_SERVER, '{{ROOTS}}'] } },
     roots: [tmpRoot],
     cwd: PROJECT
   });
@@ -49,7 +66,7 @@ after(async () => {
 
 function makeOrchestrator(driver, { approveAll = true } = {}) {
   const policy = new PolicyEngine({
-    policy: { autoApproveReads: true, requireApprovalForWrites: true, allowedServers: ['fs'], deniedTools: [], maxWritesPerTask: 10 },
+    policy: { autoApproveReads: true, requireApprovalForWrites: true, allowedServers: ['unified'], deniedTools: [], maxWritesPerTask: 10 },
     sandbox: { denyGlobs: ['**/.env'] },
     roots: [tmpRoot]
   });
@@ -81,7 +98,7 @@ test('ContextCompiler marca archivos sin cambios usando el manifiesto previo', a
   assert.match(second.pack, /SIN CAMBIOS/);
 });
 
-test('bucle completo llega a done y escribe en disco', async () => {
+t('bucle completo llega a done y escribe en disco', async () => {
   const orch = makeOrchestrator(new MockDriver({ mode: 'smart', latencyMs: 0 }));
   const res = await orch.run('Documenta los TODO de src/');
   assert.equal(res.status, 'done');
@@ -91,7 +108,7 @@ test('bucle completo llega a done y escribe en disco', async () => {
   assert.ok(!content.includes('TODO: validar'));
 });
 
-test('el orquestador se recupera de formato inválido y luego completa', async () => {
+t('el orquestador se recupera de formato inválido y luego completa', async () => {
   let n = 0;
   const flaky = {
     async init() {},
@@ -107,16 +124,16 @@ test('el orquestador se recupera de formato inválido y luego completa', async (
   assert.equal(n, 2);
 });
 
-test('agota los reintentos de reparación y termina con parse_error', async () => {
+t('agota los reintentos de reparación y termina con parse_error', async () => {
   const broken = { async init() {}, async send() { return 'bla bla sin bloque'; }, async close() {} };
   const res = await makeOrchestrator(broken).run('tarea');
   assert.equal(res.status, 'parse_error');
 });
 
-test('respeta el límite de turnos', async () => {
+t('respeta el límite de turnos', async () => {
   const looper = {
     async init() {},
-    async send() { return '```mcp-plan\n{"steps":[{"id":"s1","server":"fs","tool":"grep","args":{"path":".","pattern":"x"}}]}\n```'; },
+    async send() { return '```mcp-plan\n{"steps":[{"id":"s1","server":"unified","tool":"search_nodes","args":{"path":".","query":"x"}}]}\n```'; },
     async close() {}
   };
   const res = await makeOrchestrator(looper).run('bucle infinito');
@@ -124,14 +141,14 @@ test('respeta el límite de turnos', async () => {
   assert.equal(res.budget.turns, CFG.budget.maxTurns);
 });
 
-test('un rechazo del usuario no aborta el bucle y se reporta al modelo', async () => {
+t('un rechazo del usuario no aborta el bucle y se reporta al modelo', async () => {
   const orch = makeOrchestrator(new MockDriver({ mode: 'smart', latencyMs: 0 }), { approveAll: false });
   const res = await orch.run('Documenta los TODO');
   assert.equal(res.status, 'done');
   assert.equal(res.filesChanged.length, 0);
 });
 
-test('mcp-ask detiene el bucle pidiendo decisión', async () => {
+t('mcp-ask detiene el bucle pidiendo decisión', async () => {
   const asker = {
     async init() {},
     async send() { return '```mcp-ask\n{"question":"¿Sobrescribo config?"}\n```'; },
@@ -142,14 +159,14 @@ test('mcp-ask detiene el bucle pidiendo decisión', async () => {
   assert.match(res.detail, /Sobrescribo/);
 });
 
-test('la política bloquea el paso fuera del sandbox dentro de un plan válido', async () => {
+t('la política bloquea el paso fuera del sandbox dentro de un plan válido', async () => {
   const evil = {
     n: 0,
     async init() {},
     async send() {
       this.n++;
       if (this.n === 1) {
-        return '```mcp-plan\n{"steps":[{"id":"x","server":"fs","tool":"read_text_file","args":{"path":"../../../etc/passwd"}}]}\n```';
+        return '```mcp-plan\n{"steps":[{"id":"x","server":"unified","tool":"read_file","args":{"path":"../../../etc/passwd"}}]}\n```';
       }
       return '```mcp-done\n{"summary":"bloqueado correctamente"}\n```';
     },

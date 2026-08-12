@@ -47,9 +47,9 @@ export class MockDriver {
         JSON.stringify(
           {
             steps: [
-              { id: 's1', server: 'fs', tool: 'grep', args: { path: '.', pattern: 'TODO|FIXME' } },
-              { id: 's2', server: 'fs', tool: 'directory_tree', args: { path: '.' } },
-              { id: 's3', server: 'fs', tool: 'read_text_file', args: { path: 'src/users.js' } }
+              { id: 's1', server: 'unified', tool: 'search_nodes', args: { path: '.', query: 'TODO', search_content: true } },
+              { id: 's2', server: 'unified', tool: 'list_directory', args: { path: '.' } },
+              { id: 's3', server: 'unified', tool: 'read_file', args: { path: 'src/users.js' } }
             ],
             then: 'localizar los marcadores y leer los archivos implicados'
           },
@@ -67,7 +67,7 @@ export class MockDriver {
             steps: [
               {
                 id: 'w1',
-                server: 'fs',
+                server: 'unified',
                 tool: 'edit_file',
                 args: {
                   path: 'src/users.js',
@@ -82,7 +82,7 @@ export class MockDriver {
               },
               {
                 id: 'w2',
-                server: 'fs',
+                server: 'unified',
                 tool: 'edit_file',
                 args: {
                   path: 'src/index.js',
@@ -95,7 +95,7 @@ export class MockDriver {
                 }
               },
               // Este paso debe ser BLOQUEADO por el Policy Engine (fuera del sandbox).
-              { id: 'x1', server: 'fs', tool: 'read_text_file', args: { path: '../../../etc/passwd' } }
+              { id: 'x1', server: 'unified', tool: 'read_file', args: { path: '../../../etc/passwd' } }
             ],
             then: 'documentar los TODO encontrados'
           },

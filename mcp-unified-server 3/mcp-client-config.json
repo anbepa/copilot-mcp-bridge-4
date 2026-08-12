@@ -1,0 +1,91 @@
+{
+  "_comment": "Snippets de configuración para clientes MCP. Sustituye <PUBLIC_URL> por la URL que imprime start.sh (p. ej. https://algo.trycloudflare.com).",
+
+  "claude_desktop_or_vscode": {
+    "mcpServers": {
+      "unified-fs-bash": {
+        "type": "sse",
+        "url": "<PUBLIC_URL>/sse"
+      }
+    }
+  },
+
+  "local_sin_tunel": {
+    "mcpServers": {
+      "unified-fs-bash-local": {
+        "type": "sse",
+        "url": "http://127.0.0.1:8787/sse"
+      }
+    }
+  },
+
+  "con_autenticacion": {
+    "mcpServers": {
+      "unified-fs-bash-secure": {
+        "type": "sse",
+        "url": "<PUBLIC_URL>/sse",
+        "headers": {
+          "Authorization": "Bearer <MCP_AUTH_TOKEN>"
+        }
+      }
+    }
+  },
+
+  "copilot_studio": {
+    "transport": "Server-Sent Events (SSE)",
+    "serverUrl": "<PUBLIC_URL>/sse",
+    "streamableHttpUrl": "<PUBLIC_URL>/mcp",
+    "authentication": "None | API Key (Header: Authorization, Value: Bearer <MCP_AUTH_TOKEN>)",
+    "pasos": [
+      "1. Ejecuta start.sh / start.bat y copia la URL pública.",
+      "2. Copilot Studio > Tools > Add a tool > Model Context Protocol.",
+      "3. Pega <PUBLIC_URL>/sse como Server URL y selecciona transporte SSE.",
+      "4. Guarda; se descubrirán automáticamente las 82 herramientas."
+    ]
+  },
+
+  "_nota_browser": "Las tools browser_* requieren Playwright. Arranca con 'ENABLE_BROWSER=true ./start.sh' o instala manualmente: pip install -r requirements-browser.txt && python -m playwright install chromium. Sin Playwright las tools se publican igualmente y devuelven un error accionable con las instrucciones de instalación.",
+
+  "_nota_api_testing": "Las tools de API Testing no requieren dependencias extra: el motor JSONPath y el validador JSON Schema están implementados en el propio proyecto. 'run_postman_collection' usa newman si está instalado (npm install -g newman); si no, cae a un runner nativo que evalúa los scripts pm.* con Node; y si tampoco hay Node, ejecuta las peticiones aplicando la aserción implícita de estado 2xx. El campo 'runner' de la respuesta indica siempre el modo real utilizado.",
+
+  "tools_disponibles": {
+    "total": 82,
+    "filesystem": [
+      "read_file", "write_file", "create_directory", "list_directory",
+      "move_file", "search_nodes", "delete_node", "get_file_info"
+    ],
+    "terminal": [
+      "run", "run_background", "list_background", "kill_background",
+      "get_background_output", "get_system_info"
+    ],
+    "browser": [
+      "browser_navigate", "browser_navigate_back", "browser_close",
+      "browser_snapshot", "browser_find", "browser_click", "browser_hover",
+      "browser_type", "browser_fill_form", "browser_select_option",
+      "browser_press_key", "browser_drag", "browser_drop",
+      "browser_file_upload", "browser_handle_dialog", "browser_evaluate",
+      "browser_run_code_unsafe", "browser_wait_for", "browser_resize",
+      "browser_take_screenshot", "browser_console_messages",
+      "browser_network_requests", "browser_network_request", "browser_tabs",
+      "browser_get_config", "browser_install", "browser_network_state_set",
+      "browser_route", "browser_route_list", "browser_unroute",
+      "browser_cookie_list", "browser_cookie_get", "browser_cookie_set",
+      "browser_cookie_delete", "browser_cookie_clear",
+      "browser_localstorage_list", "browser_localstorage_get",
+      "browser_localstorage_set", "browser_localstorage_delete",
+      "browser_localstorage_clear", "browser_sessionstorage_list",
+      "browser_sessionstorage_get", "browser_sessionstorage_set",
+      "browser_sessionstorage_delete", "browser_sessionstorage_clear",
+      "browser_storage_state", "browser_set_storage_state",
+      "browser_highlight", "browser_hide_highlight", "browser_start_tracing",
+      "browser_stop_tracing", "browser_start_video", "browser_stop_video",
+      "browser_mouse_move_xy", "browser_mouse_click_xy", "browser_mouse_down",
+      "browser_mouse_up", "browser_mouse_drag_xy", "browser_mouse_wheel"
+    ],
+    "api_testing": [
+      "set_api_auth", "set_session_variable", "build_and_send_request",
+      "validate_api_response", "validate_json_schema", "extract_response_data",
+      "run_postman_collection", "generate_test_report", "get_api_session"
+    ]
+  }
+}

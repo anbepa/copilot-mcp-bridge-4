@@ -15,7 +15,7 @@
     "requireApprovalForWrites": true,
     "requireApprovalForExec": true,
     "allowExec": true,
-    "allowedServers": ["fs", "playwright"],
+    "allowedServers": ["unified"],
     "deniedTools": [],
     "maxWritesPerTask": 25
   },
@@ -67,27 +67,17 @@
 
   "mcp": {
     "servers": {
-      "fs": {
-        "description": "Servidor MCP de filesystem incluido (cero dependencias).",
-        "command": "node",
-        "args": ["./src/mcp/servers/fs-server.mjs", "{{ROOTS}}"],
-        "enabled": true
-      },
-      "playwright": {
-        "description": "Navegador Playwright oficial para interactuar con la web.",
-        "command": "npx",
-        "args": ["-y", "@playwright/mcp@latest"],
+      "unified": {
+        "description": "MCP Unified Server (82 tools: filesystem + terminal + browser + API testing) vía adaptador stdio.",
+        "command": "python3",
+        "args": ["./mcp-unified-server 3/stdio_server.py", "{{ROOTS}}"],
         "env": {
-          "MCP_DEDUPE_WINDOW_MS": "5000",
-          "ALLOW_BROWSER_CLOSE": "false"
+          "MCP_LOG_LEVEL": "info",
+          "MCP_ENABLE_TERMINAL": "true",
+          "MCP_ENABLE_BROWSER": "true",
+          "MCP_BROWSER_HEADLESS": "true"
         },
         "enabled": true
-      },
-      "fs-official": {
-        "description": "Alternativa oficial. Requiere red: npx @modelcontextprotocol/server-filesystem",
-        "command": "npx",
-        "args": ["-y", "@modelcontextprotocol/server-filesystem", "{{ROOTS}}"],
-        "enabled": false
       }
     }
   },

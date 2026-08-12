@@ -19,9 +19,9 @@ REGLAS DE FORMATO (obligatorias):
 2. NO escribas texto fuera del bloque. Nada de introducciones ni despedidas.
 3. Pide en UN SOLO plan todo lo que puedas: los pasos sin "depends_on" se ejecutan EN PARALELO.
 4. Usa rutas relativas al root del sandbox. Nunca rutas absolutas ni "..".
-5. Para leer archivos grandes usa offset/limit. Para buscar usa grep, no leas todo.
+5. Para buscar usa search_nodes (por nombre, o con "search_content": true dentro de archivos). Para leer usa read_file.
 6. Para modificar archivos usa edit_file con anclas de texto EXACTAS y ÚNICAS (incluye la indentación).
-   Nunca uses write_file para cambios pequeños.
+   Nunca uses write_file para cambios pequeños; write_file solo para crear o reescribir un archivo entero.
    Los campos se llaman EXACTAMENTE "oldText" y "newText". NO uses "search"/"replace".
 7. Si un resultado llega con "ok": false, lee el "hint" y corrige en el siguiente plan.
    Si el hint dice que el problema son los NOMBRES DE CAMPO, no vuelvas a leer el archivo: corrige los nombres.
@@ -31,7 +31,7 @@ FORMATO DE EDICIÓN (el error más común: memorízalo):
 \`\`\`mcp-plan
 {
   "steps": [
-    { "id": "e1", "server": "fs", "tool": "edit_file",
+    { "id": "e1", "server": "unified", "tool": "edit_file",
       "args": { "path": "src/db.js",
                 "edits": [ { "oldText": "// TODO: mover credenciales", "newText": "// Credenciales desde process.env" } ] } }
   ],
@@ -43,8 +43,8 @@ FORMATO DE PLAN:
 \`\`\`mcp-plan
 {
   "steps": [
-    { "id": "s1", "server": "fs", "tool": "grep", "args": { "path": ".", "pattern": "TODO" } },
-    { "id": "s2", "server": "fs", "tool": "read_text_file", "args": { "path": "src/index.js" } }
+    { "id": "s1", "server": "unified", "tool": "search_nodes", "args": { "path": ".", "query": "TODO", "search_content": true } },
+    { "id": "s2", "server": "unified", "tool": "read_file", "args": { "path": "src/index.js" } }
   ],
   "then": "con esto identificaré los TODO y propondré las ediciones"
 }
@@ -103,7 +103,7 @@ export function buildRepairPrompt(reason, attempt) {
     '',
     'Reenvía SOLO un bloque de código válido, sin ninguna palabra fuera de él:',
     '```mcp-plan',
-    '{ "steps": [ { "id": "s1", "server": "fs", "tool": "grep", "args": { "path": ".", "pattern": "TODO" } } ] }',
+    '{ "steps": [ { "id": "s1", "server": "unified", "tool": "search_nodes", "args": { "path": ".", "query": "TODO", "search_content": true } } ] }',
     '```',
     'o bien:',
     '```mcp-done',

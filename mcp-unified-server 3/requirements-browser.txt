@@ -1,0 +1,10 @@
+# Dependencia OPCIONAL: sólo necesaria para el grupo de tools `browser_*`.
+#
+#   pip install -r requirements-browser.txt
+#   python -m playwright install chromium
+#
+# O bien deja que start.sh / start.bat lo haga por ti:  ENABLE_BROWSER=true ./start.sh
+#
+# El servidor arranca perfectamente SIN esta dependencia: las tools browser_*
+# siguen apareciendo en tools/list y devuelven un error accionable si se invocan.
+playwright>=1.40

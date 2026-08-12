@@ -23,6 +23,7 @@ import { decideSessionOutcome } from './util/session.mjs';
 import { createApprover } from './util/approve.mjs';
 import { Audit } from './audit.mjs';
 import { createDriver } from './driver/index.mjs';
+import { ensureUnifiedServerDeps } from './util/bootstrap.mjs';
 
 const argv = process.argv.slice(2);
 const cmd = argv[0] ?? 'help';
@@ -110,16 +111,18 @@ async function doctor() {
   }
 
   const host = new McpHost({ servers: cfg.mcp.servers, roots: cfg.sandbox.roots, cwd: cfg.projectDir });
+  ensureUnifiedServerDeps({ servers: cfg.mcp.servers, cwd: cfg.projectDir });
   await host.start();
   const cat = host.catalog();
   log.ok(`Catálogo MCP: ${cat.length} herramientas de ${host.clients.size} servidor(es)`);
 
   const policy = new PolicyEngine({ policy: cfg.policy, sandbox: cfg.sandbox, roots: cfg.sandbox.roots });
-  const escape = policy.evaluate({ server: 'fs', tool: 'read_text_file', args: { path: '../../etc/passwd' } });
+  const srv = cfg.policy.allowedServers?.[0] ?? 'unified';
+  const escape = policy.evaluate({ server: srv, tool: 'read_file', args: { path: '../../etc/passwd' } });
   escape.decision === 'deny' ? log.ok('Policy Engine bloquea escapes del sandbox') : log.error('¡FALLO DE SEGURIDAD! El escape del sandbox no fue bloqueado');
-  const secret = policy.evaluate({ server: 'fs', tool: 'read_text_file', args: { path: '.env' } });
+  const secret = policy.evaluate({ server: srv, tool: 'read_file', args: { path: '.env' } });
   secret.decision === 'deny' ? log.ok('Policy Engine bloquea archivos sensibles (.env)') : log.error('¡FALLO! .env no está bloqueado');
-  const write = policy.evaluate({ server: 'fs', tool: 'write_file', args: { path: 'a.txt', content: 'x' } });
+  const write = policy.evaluate({ server: srv, tool: 'write_file', args: { path: 'a.txt', content: 'x' } });
   write.decision === 'ask' ? log.ok('Las escrituras requieren aprobación humana') : log.warn(`Escrituras: ${write.decision}`);
 
   await host.stop();
@@ -335,6 +338,7 @@ async function run() {
 
   // 2) Servidores MCP
   log.banner('2 · ARRANCANDO MCP');
+  ensureUnifiedServerDeps({ servers: cfg.mcp.servers, cwd: cfg.projectDir });
   const host = new McpHost({ servers: cfg.mcp.servers, roots: cfg.sandbox.roots, cwd: cfg.projectDir });
   await host.start();
 
