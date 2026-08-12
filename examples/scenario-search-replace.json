@@ -1,0 +1,10 @@
+{
+  "description": "Reproduce el fallo REAL del log de producción: Copilot usa {search,replace} en vez de {oldText,newText}. Antes provocaba un bucle infinito de ENOMATCH; ahora debe aplicarse a la primera.",
+  "replies": [
+    "```mcp-plan\n{\n  \"steps\": [\n    { \"id\": \"s1\", \"server\": \"fs\", \"tool\": \"read_text_file\", \"args\": { \"path\": \"src/db.js\" } }\n  ],\n  \"then\": \"leeré el archivo para documentar su TODO\"\n}\n```",
+
+    "```mcp-plan\n{\n  \"steps\": [\n    { \"id\": \"s2\", \"server\": \"fs\", \"tool\": \"edit_file\", \"args\": { \"path\": \"src/db.js\", \"edits\": [ { \"search\": \"// TODO: mover credenciales a variables de entorno\", \"replace\": \"// TODO(seguridad): mover las credenciales a variables de entorno.\\n// Riesgo: los secretos en el código quedan expuestos en el repositorio.\\n// Acción: leer DB_HOST, DB_USER y DB_PASSWORD desde process.env.\" } ] } }\n  ],\n  \"then\": \"documentaré el TODO usando search/replace\"\n}\n```",
+
+    "```mcp-done\n{\n  \"summary\": \"Documentado el TODO de credenciales en src/db.js con su riesgo y la acción concreta.\",\n  \"files_changed\": [\"src/db.js\"]\n}\n```"
+  ]
+}

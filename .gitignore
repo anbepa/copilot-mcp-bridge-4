@@ -1,0 +1,28 @@
+# Dependencias
+node_modules/
+package-lock.json
+
+# Archivos temporales y caché
+.tmp/
+.cache/
+.DS_Store
+Thumbs.db
+
+# Perfiles de navegador y sesiones
+.browser-profile/
+.copilot-mcp-bridge/
+chrome-debug/
+
+# Auditoría y logs
+.audit/
+*.log
+*.jsonl
+
+# Configuración local (sensible)
+config/local.json
+
+# Workspace (Sandbox)
+workspace/
+
+# Excluir la carpeta 'servers' como se solicitó
+servers/

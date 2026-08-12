@@ -1,0 +1,10 @@
+{
+  "description": "El modelo insiste en el MISMO paso fallido. Verifica el cortacircuitos: el puente lo detecta y se lo advierte explícitamente en vez de dejarlo agotar el presupuesto.",
+  "replies": [
+    "```mcp-plan\n{\n  \"steps\": [\n    { \"id\": \"x1\", \"server\": \"fs\", \"tool\": \"edit_file\", \"args\": { \"path\": \"src/db.js\", \"edits\": [ { \"oldText\": \"ANCLA QUE NO EXISTE\", \"newText\": \"y\" } ] } }\n  ],\n  \"then\": \"intento 1\"\n}\n```",
+
+    "```mcp-plan\n{\n  \"steps\": [\n    { \"id\": \"x1\", \"server\": \"fs\", \"tool\": \"edit_file\", \"args\": { \"path\": \"src/db.js\", \"edits\": [ { \"oldText\": \"ANCLA QUE NO EXISTE\", \"newText\": \"y\" } ] } }\n  ],\n  \"then\": \"repito exactamente lo mismo\"\n}\n```",
+
+    "```mcp-done\n{\n  \"summary\": \"Me detuve tras detectar que repetía un paso fallido. No se modificó ningún archivo.\",\n  \"files_changed\": []\n}\n```"
+  ]
+}

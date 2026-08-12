@@ -1,0 +1,30 @@
+{
+  "name": "copilot-mcp-bridge",
+  "version": "0.4.0",
+  "description": "Puente preliminar entre M365 Copilot Chat y un host MCP local. Copilot razona; tu PC ejecuta.",
+  "type": "module",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "bin": {
+    "cmb": "./src/cli.mjs"
+  },
+  "scripts": {
+    "test": "node --test \"test/**/*.test.mjs\"",
+    "demo": "node src/cli.mjs run --driver mock --scenario examples/scenario-refactor.json --task \"Documenta los TODO de src/\" --yes",
+    "demo:searchreplace": "node src/cli.mjs run --driver mock --scenario examples/scenario-search-replace.json --task \"Documenta los TODO de src/\" --yes",
+    "demo:loop": "node src/cli.mjs run --driver mock --scenario examples/scenario-retry-loop.json --task \"Prueba del cortacircuitos\" --yes",
+    "doctor": "node src/cli.mjs doctor",
+    "calibrate": "node scripts/calibrate.mjs",
+    "login": "node src/cli.mjs login",
+    "run": "node src/cli.mjs run"
+  },
+  "optionalDependencies": {
+    "playwright": "^1.62.1"
+  },
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}

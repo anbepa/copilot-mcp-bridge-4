@@ -1,0 +1,99 @@
+{
+  "$comment": "Configuración por defecto. Copia a config/local.json para sobrescribir (no se versiona).",
+
+  "sandbox": {
+    "roots": ["./workspace"],
+    "denyGlobs": [
+      "**/.git/**", "**/node_modules/**", "**/.env", "**/.env.*",
+      "**/*.pem", "**/*.key", "**/id_rsa*", "**/.ssh/**",
+      "**/.aws/**", "**/.npmrc", "**/secrets/**"
+    ]
+  },
+
+  "policy": {
+    "autoApproveReads": true,
+    "requireApprovalForWrites": true,
+    "requireApprovalForExec": true,
+    "allowExec": true,
+    "allowedServers": ["fs", "playwright"],
+    "deniedTools": [],
+    "maxWritesPerTask": 25
+  },
+
+  "budget": {
+    "maxTurns": 12,
+    "maxStepsPerPlan": 20,
+    "maxBytesPerResult": 8000,
+    "maxTotalResultBytes": 120000,
+    "maxTaskSeconds": 900,
+    "parallelism": 4,
+    "maxRepairAttempts": 2
+  },
+
+  "context": {
+    "maxTreeEntries": 400,
+    "maxSymbolFiles": 120,
+    "maxKeyFileBytes": 6000,
+    "keyFiles": [
+      "package.json", "tsconfig.json", "pyproject.toml", "requirements.txt",
+      "go.mod", "pom.xml", "build.gradle", "Cargo.toml",
+      "README.md", "Makefile", "docker-compose.yml"
+    ],
+    "codeExtensions": [
+      ".js", ".mjs", ".cjs", ".jsx", ".ts", ".tsx", ".py", ".java",
+      ".go", ".rs", ".rb", ".php", ".cs", ".kt", ".swift", ".sh", ".sql"
+    ],
+    "maxPackBytes": 60000
+  },
+
+  "driver": {
+    "kind": "playwright",
+    "url": "https://m365.cloud.microsoft/chat",
+    "model": "GPT 5.6 Think",
+    "selectModelEachTurn": false,
+    "headless": false,
+    "userDataDir": "~/.copilot-mcp-bridge/browser-profile",
+    "cdpEndpoint": "http://127.0.0.1:9222",
+    "timeoutMs": 120000,
+    "editorTimeoutMs": 60000,
+    "quietMs": 1500,
+    "pollMs": 250,
+    "preferClipboard": true,
+    "attachments": {
+      "enabled": true,
+      "thresholdChars": 4000
+    }
+  },
+
+  "mcp": {
+    "servers": {
+      "fs": {
+        "description": "Servidor MCP de filesystem incluido (cero dependencias).",
+        "command": "node",
+        "args": ["./src/mcp/servers/fs-server.mjs", "{{ROOTS}}"],
+        "enabled": true
+      },
+      "playwright": {
+        "description": "Navegador Playwright oficial para interactuar con la web.",
+        "command": "npx",
+        "args": ["-y", "@playwright/mcp@latest"],
+        "env": {
+          "MCP_DEDUPE_WINDOW_MS": "5000",
+          "ALLOW_BROWSER_CLOSE": "false"
+        },
+        "enabled": true
+      },
+      "fs-official": {
+        "description": "Alternativa oficial. Requiere red: npx @modelcontextprotocol/server-filesystem",
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-filesystem", "{{ROOTS}}"],
+        "enabled": false
+      }
+    }
+  },
+
+  "audit": {
+    "dir": "./.audit",
+    "enabled": true
+  }
+}

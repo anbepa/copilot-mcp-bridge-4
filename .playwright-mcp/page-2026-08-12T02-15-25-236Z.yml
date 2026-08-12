@@ -1,0 +1,451 @@
+- generic [active] [ref=f3e1]:
+  - navigation [ref=f3e2]:
+    - generic [ref=f3e3]:
+      - button "$ Currency " [ref=f3e7] [cursor=pointer]:
+        - strong [ref=f3e8]: $
+        - text: Currency
+        - generic [ref=f3e9]: 
+      - list [ref=f3e11]:
+        - listitem [ref=f3e12]:
+          - link "" [ref=f3e13] [cursor=pointer]:
+            - /url: http://opencart.abstracta.us:80/index.php?route=information/contact
+          - text: "123456789"
+        - listitem [ref=f3e15]:
+          - link " My Account" [ref=f3e16] [cursor=pointer]:
+            - /url: https://opencart.abstracta.us:443/index.php?route=account/account
+            - generic [ref=f3e17]: 
+            - text: My Account
+        - listitem [ref=f3e19]:
+          - link " Wish List (0)" [ref=f3e20] [cursor=pointer]:
+            - /url: https://opencart.abstracta.us:443/index.php?route=account/wishlist
+            - generic [ref=f3e21]: 
+            - text: Wish List (0)
+        - listitem [ref=f3e22]:
+          - link " Shopping Cart" [ref=f3e23] [cursor=pointer]:
+            - /url: http://opencart.abstracta.us:80/index.php?route=checkout/cart
+            - generic [ref=f3e24]: 
+            - text: Shopping Cart
+        - listitem [ref=f3e25]:
+          - link " Checkout" [ref=f3e26] [cursor=pointer]:
+            - /url: https://opencart.abstracta.us:443/index.php?route=checkout/checkout
+            - generic [ref=f3e27]: 
+            - text: Checkout
+  - banner [ref=f3e28]:
+    - generic [ref=f3e30]:
+      - heading [level=1] [ref=f3e33]:
+        - link "Your Store" [ref=f3e34] [cursor=pointer]:
+          - /url: http://opencart.abstracta.us:80/index.php?route=common/home
+      - generic [ref=f3e36]:
+        - textbox "Search" [ref=f3e37]
+        - button "" [ref=f3e39] [cursor=pointer]
+      - button " 0 item(s) - $0.00" [ref=f3e43] [cursor=pointer]:
+        - generic [ref=f3e44]: 
+        - text: 0 item(s) - $0.00
+  - navigation [ref=f3e46]:
+    - generic: 
+    - list [ref=f3e48]:
+      - listitem [ref=f3e49]:
+        - link "Desktops" [ref=f3e50] [cursor=pointer]:
+          - /url: http://opencart.abstracta.us:80/index.php?route=product/category&path=20
+      - listitem [ref=f3e51]:
+        - link "Laptops & Notebooks" [ref=f3e52] [cursor=pointer]:
+          - /url: http://opencart.abstracta.us:80/index.php?route=product/category&path=18
+      - listitem [ref=f3e53]:
+        - link "Components" [ref=f3e54] [cursor=pointer]:
+          - /url: http://opencart.abstracta.us:80/index.php?route=product/category&path=25
+      - listitem [ref=f3e55]:
+        - link "Tablets" [ref=f3e56] [cursor=pointer]:
+          - /url: http://opencart.abstracta.us:80/index.php?route=product/category&path=57
+      - listitem [ref=f3e57]:
+        - link "Software" [ref=f3e58] [cursor=pointer]:
+          - /url: http://opencart.abstracta.us:80/index.php?route=product/category&path=17
+      - listitem [ref=f3e59]:
+        - link "Phones & PDAs" [ref=f3e60] [cursor=pointer]:
+          - /url: http://opencart.abstracta.us:80/index.php?route=product/category&path=24
+      - listitem [ref=f3e61]:
+        - link "Cameras" [ref=f3e62] [cursor=pointer]:
+          - /url: http://opencart.abstracta.us:80/index.php?route=product/category&path=33
+      - listitem [ref=f3e63]:
+        - link "MP3 Players" [ref=f3e64] [cursor=pointer]:
+          - /url: http://opencart.abstracta.us:80/index.php?route=product/category&path=34
+  - generic [ref=f3e65]:
+    - list [ref=f3e66]:
+      - listitem [ref=f3e67]:
+        - link "" [ref=f3e68] [cursor=pointer]:
+          - /url: http://opencart.abstracta.us:80/index.php?route=common/home
+      - listitem [ref=f3e70]:
+        - link "Apple Cinema 30\"" [ref=f3e71] [cursor=pointer]:
+          - /url: http://opencart.abstracta.us:80/index.php?route=product/product&product_id=42
+    - generic [ref=f3e73]:
+      - generic [ref=f3e74]:
+        - generic [ref=f3e75]:
+          - list [ref=f3e76]:
+            - listitem [ref=f3e77]:
+              - link [ref=f3e78] [cursor=pointer]:
+                - /url: http://opencart.abstracta.us:80/image/cache/catalog/demo/apple_cinema_30-500x500.jpg
+                - img "Apple Cinema 30\"" [ref=f3e79]
+            - listitem [ref=f3e80]:
+              - link [ref=f3e81] [cursor=pointer]:
+                - /url: http://opencart.abstracta.us:80/image/cache/catalog/demo/canon_eos_5d_1-500x500.jpg
+                - img "Apple Cinema 30\"" [ref=f3e82]
+            - listitem [ref=f3e83]:
+              - link [ref=f3e84] [cursor=pointer]:
+                - /url: http://opencart.abstracta.us:80/image/cache/catalog/demo/compaq_presario-500x500.jpg
+                - img "Apple Cinema 30\"" [ref=f3e85]
+            - listitem [ref=f3e86]:
+              - link [ref=f3e87] [cursor=pointer]:
+                - /url: http://opencart.abstracta.us:80/image/cache/catalog/demo/hp_1-500x500.jpg
+                - img "Apple Cinema 30\"" [ref=f3e88]
+            - listitem [ref=f3e89]:
+              - link [ref=f3e90] [cursor=pointer]:
+                - /url: http://opencart.abstracta.us:80/image/cache/catalog/demo/canon_logo-500x500.jpg
+                - img "Apple Cinema 30\"" [ref=f3e91]
+            - listitem [ref=f3e92]:
+              - link [ref=f3e93] [cursor=pointer]:
+                - /url: http://opencart.abstracta.us:80/image/cache/catalog/demo/canon_eos_5d_2-500x500.jpg
+                - img "Apple Cinema 30\"" [ref=f3e94]
+          - list [ref=f3e95]:
+            - listitem [ref=f3e96]:
+              - link "Description" [ref=f3e97]:
+                - /url: "#tab-description"
+            - listitem [ref=f3e98]:
+              - link "Specification" [ref=f3e99] [cursor=pointer]:
+                - /url: "#tab-specification"
+            - listitem [ref=f3e100]:
+              - link "Reviews (0)" [ref=f3e101] [cursor=pointer]:
+                - /url: "#tab-review"
+          - generic [ref=f3e102]:
+            - generic [ref=f3e103]:
+              - paragraph [ref=f3e104]:
+                - generic [ref=f3e105]:
+                  - generic [ref=f3e106]: The 30-inch Apple Cinema HD Display delivers an amazing 2560 x 1600 pixel resolution. Designed specifically for the creative professional, this display provides more space for easier access to all the tools and palettes needed to edit, format and composite your work. Combine this display with a Mac Pro, MacBook Pro, or PowerMac G5 and there's no limit to what you can achieve.
+                  - generic [ref=f3e107]: The Cinema HD features an active-matrix liquid crystal display that produces flicker-free images that deliver twice the brightness, twice the sharpness and twice the contrast ratio of a typical CRT display. Unlike other flat panels, it's designed with a pure digital interface to deliver distortion-free images that never need adjusting. With over 4 million digital pixels, the display is uniquely suited for scientific and technical applications such as visualizing molecular structures or analyzing geological data.
+                  - generic [ref=f3e108]: "Offering accurate, brilliant color performance, the Cinema HD delivers up to 16.7 million colors across a wide gamut allowing you to see subtle nuances between colors from soft pastels to rich jewel tones. A wide viewing angle ensures uniform color from edge to edge. Apple's ColorSync technology allows you to create custom profiles to maintain consistent color onscreen and in print. The result: You can confidently use this display in all your color-critical applications."
+                  - generic [ref=f3e109]: Housed in a new aluminum design, the display has a very thin bezel that enhances visual accuracy. Each display features two FireWire 400 ports and two USB 2.0 ports, making attachment of desktop peripherals, such as iSight, iPod, digital and still cameras, hard drives, printers and scanners, even more accessible and convenient. Taking advantage of the much thinner and lighter footprint of an LCD, the new displays support the VESA (Video Electronics Standards Association) mounting interface standard. Customers with the optional Cinema Display VESA Mount Adapter kit gain the flexibility to mount their display in locations most appropriate for their work environment.
+                  - generic [ref=f3e110]: The Cinema HD features a single cable design with elegant breakout for the USB 2.0, FireWire 400 and a pure digital connection using the industry standard Digital Video Interface (DVI) interface. The DVI connection allows for a direct pure-digital connection.
+              - heading "Features:" [level=3] [ref=f3e111]
+              - paragraph [ref=f3e112]: Unrivaled display performance
+              - list [ref=f3e113]:
+                - listitem [ref=f3e114]: 30-inch (viewable) active-matrix liquid crystal display provides breathtaking image quality and vivid, richly saturated color.
+                - listitem [ref=f3e115]: Support for 2560-by-1600 pixel resolution for display of high definition still and video imagery.
+                - listitem [ref=f3e116]: Wide-format design for simultaneous display of two full pages of text and graphics.
+                - listitem [ref=f3e117]: Industry standard DVI connector for direct attachment to Mac- and Windows-based desktops and notebooks
+                - listitem [ref=f3e118]: Incredibly wide (170 degree) horizontal and vertical viewing angle for maximum visibility and color performance.
+                - listitem [ref=f3e119]: Lightning-fast pixel response for full-motion digital video playback.
+                - listitem [ref=f3e120]: Support for 16.7 million saturated colors, for use in all graphics-intensive applications.
+              - paragraph [ref=f3e121]: Simple setup and operation
+              - list [ref=f3e122]:
+                - listitem [ref=f3e123]: Single cable with elegant breakout for connection to DVI, USB and FireWire ports
+                - listitem [ref=f3e124]: Built-in two-port USB 2.0 hub for easy connection of desktop peripheral devices.
+                - listitem [ref=f3e125]: Two FireWire 400 ports to support iSight and other desktop peripherals
+              - paragraph [ref=f3e126]: Sleek, elegant design
+              - list [ref=f3e127]:
+                - listitem [ref=f3e128]: Huge virtual workspace, very small footprint.
+                - listitem [ref=f3e129]: Narrow Bezel design to minimize visual impact of using dual displays
+                - listitem [ref=f3e130]: Unique hinge design for effortless adjustment
+                - listitem [ref=f3e131]: Support for VESA mounting solutions (Apple Cinema Display VESA Mount Adapter sold separately)
+              - heading "Technical specifications" [level=3] [ref=f3e132]
+              - paragraph [ref=f3e133]: Screen size (diagonal viewable image size)
+              - list [ref=f3e134]:
+                - listitem [ref=f3e135]: "Apple Cinema HD Display: 30 inches (29.7-inch viewable)"
+              - paragraph [ref=f3e136]: Screen type
+              - list [ref=f3e137]:
+                - listitem [ref=f3e138]: Thin film transistor (TFT) active-matrix liquid crystal display (AMLCD)
+              - paragraph [ref=f3e139]: Resolutions
+              - list [ref=f3e140]:
+                - listitem [ref=f3e141]: 2560 x 1600 pixels (optimum resolution)
+                - listitem [ref=f3e142]: 2048 x 1280
+                - listitem [ref=f3e143]: 1920 x 1200
+                - listitem [ref=f3e144]: 1280 x 800
+                - listitem [ref=f3e145]: 1024 x 640
+              - paragraph [ref=f3e146]: Display colors (maximum)
+              - list [ref=f3e147]:
+                - listitem [ref=f3e148]: 16.7 million
+              - paragraph [ref=f3e149]: Viewing angle (typical)
+              - list [ref=f3e150]:
+                - listitem [ref=f3e151]: 170° horizontal; 170° vertical
+              - paragraph [ref=f3e152]: Brightness (typical)
+              - list [ref=f3e153]:
+                - listitem [ref=f3e154]: "30-inch Cinema HD Display: 400 cd/m2"
+              - paragraph [ref=f3e155]: Contrast ratio (typical)
+              - list [ref=f3e156]:
+                - listitem [ref=f3e157]: 700:1
+              - paragraph [ref=f3e158]: Response time (typical)
+              - list [ref=f3e159]:
+                - listitem [ref=f3e160]: 16 ms
+              - paragraph [ref=f3e161]: Pixel pitch
+              - list [ref=f3e162]:
+                - listitem [ref=f3e163]: "30-inch Cinema HD Display: 0.250 mm"
+              - paragraph [ref=f3e164]: Screen treatment
+              - list [ref=f3e165]:
+                - listitem [ref=f3e166]: Antiglare hardcoat
+              - paragraph [ref=f3e167]: User controls (hardware and software)
+              - list [ref=f3e168]:
+                - listitem [ref=f3e169]: Display Power,
+                - listitem [ref=f3e170]: System sleep, wake
+                - listitem [ref=f3e171]: Brightness
+                - listitem [ref=f3e172]: Monitor tilt
+              - paragraph [ref=f3e173]: Connectors and cables Cable
+              - list [ref=f3e174]:
+                - listitem [ref=f3e175]: DVI (Digital Visual Interface)
+                - listitem [ref=f3e176]: FireWire 400
+                - listitem [ref=f3e177]: USB 2.0
+                - listitem [ref=f3e178]: DC power (24 V)
+              - paragraph [ref=f3e179]: Connectors
+              - list [ref=f3e180]:
+                - listitem [ref=f3e181]: Two-port, self-powered USB 2.0 hub
+                - listitem [ref=f3e182]: Two FireWire 400 ports
+                - listitem [ref=f3e183]: Kensington security port
+              - paragraph [ref=f3e184]: VESA mount adapter Requires optional Cinema Display VESA Mount Adapter (M9649G/A)
+              - list [ref=f3e185]:
+                - listitem [ref=f3e186]: Compatible with VESA FDMI (MIS-D, 100, C) compliant mounting solutions
+              - paragraph [ref=f3e187]: Electrical requirements
+              - list [ref=f3e188]:
+                - listitem [ref=f3e189]: "Input voltage: 100-240 VAC 50-60Hz"
+                - listitem [ref=f3e190]: "Maximum power when operating: 150W"
+                - listitem [ref=f3e191]: "Energy saver mode: 3W or less"
+              - paragraph [ref=f3e192]: Environmental requirements
+              - list [ref=f3e193]:
+                - listitem [ref=f3e194]: "Operating temperature: 50° to 95° F (10° to 35° C)"
+                - listitem [ref=f3e195]: "Storage temperature: -40° to 116° F (-40° to 47° C)"
+                - listitem [ref=f3e196]: "Operating humidity: 20% to 80% noncondensing"
+                - listitem [ref=f3e197]: "Maximum operating altitude: 10,000 feet"
+              - paragraph [ref=f3e198]: Agency approvals
+              - list [ref=f3e199]:
+                - listitem [ref=f3e200]: FCC Part 15 Class B
+                - listitem [ref=f3e201]: EN55022 Class B
+                - listitem [ref=f3e202]: EN55024
+                - listitem [ref=f3e203]: VCCI Class B
+                - listitem [ref=f3e204]: AS/NZS 3548 Class B
+                - listitem [ref=f3e205]: CNS 13438 Class B
+                - listitem [ref=f3e206]: ICES-003 Class B
+                - listitem [ref=f3e207]: ISO 13406 part 2
+                - listitem [ref=f3e208]: MPR II
+                - listitem [ref=f3e209]: IEC 60950
+                - listitem [ref=f3e210]: UL 60950
+                - listitem [ref=f3e211]: CSA 60950
+                - listitem [ref=f3e212]: EN60950
+                - listitem [ref=f3e213]: ENERGY STAR
+                - listitem [ref=f3e214]: TCO '03
+              - paragraph [ref=f3e215]: Size and weight 30-inch Apple Cinema HD Display
+              - list [ref=f3e216]:
+                - listitem [ref=f3e217]: "Height: 21.3 inches (54.3 cm)"
+                - listitem [ref=f3e218]: "Width: 27.2 inches (68.8 cm)"
+                - listitem [ref=f3e219]: "Depth: 8.46 inches (21.5 cm)"
+                - listitem [ref=f3e220]: "Weight: 27.5 pounds (12.5 kg)"
+              - paragraph [ref=f3e221]: System Requirements
+              - list [ref=f3e222]:
+                - listitem [ref=f3e223]: Mac Pro, all graphic options
+                - listitem [ref=f3e224]: MacBook Pro
+                - listitem [ref=f3e225]: Power Mac G5 (PCI-X) with ATI Radeon 9650 or better or NVIDIA GeForce 6800 GT DDL or better
+                - listitem [ref=f3e226]: Power Mac G5 (PCI Express), all graphics options
+                - listitem [ref=f3e227]: PowerBook G4 with dual-link DVI support
+                - listitem [ref=f3e228]: Windows PC and graphics card that supports DVI ports with dual-link digital bandwidth and VESA DDC standard for plug-and-play setup
+            - text: "* * *"
+        - generic [ref=f3e229]:
+          - generic [ref=f3e230]:
+            - button "" [ref=f3e231] [cursor=pointer]
+            - button "" [ref=f3e233] [cursor=pointer]
+          - heading "Apple Cinema 30\"" [level=1] [ref=f3e235]
+          - list [ref=f3e236]:
+            - listitem [ref=f3e237]:
+              - text: Brands
+              - link "Apple" [ref=f3e238] [cursor=pointer]:
+                - /url: http://opencart.abstracta.us:80/index.php?route=product/manufacturer/info&manufacturer_id=8
+            - listitem [ref=f3e239]: "Product Code: Product 15"
+            - listitem [ref=f3e240]: "Reward Points: 100"
+            - listitem [ref=f3e241]: "Availability: 806"
+          - list [ref=f3e242]:
+            - listitem [ref=f3e243]: $122.00
+            - listitem [ref=f3e244]:
+              - heading "$110.00" [level=2] [ref=f3e245]
+            - listitem [ref=f3e246]: "Ex Tax: $90.00"
+            - listitem [ref=f3e247]: "Price in reward points: 400"
+            - listitem [ref=f3e248]:
+              - separator [ref=f3e249]
+            - listitem [ref=f3e250]: 10 or more $107.60
+            - listitem [ref=f3e251]: 20 or more $94.40
+            - listitem [ref=f3e252]: 30 or more $81.20
+          - generic [ref=f3e253]:
+            - separator [ref=f3e254]
+            - heading "Available Options" [level=3] [ref=f3e255]
+            - generic [ref=f3e256]:
+              - generic [ref=f3e257]: "* Radio"
+              - generic [ref=f3e410]: Radio required!
+            - generic [ref=f3e258]:
+              - generic [ref=f3e259]: "* Checkbox"
+              - generic [ref=f3e260]:
+                - generic [ref=f3e262] [cursor=pointer]:
+                  - checkbox "Checkbox 3 (+$36.00)" [checked] [ref=f3e263]
+                  - text: Checkbox 3 (+$36.00)
+                - generic [ref=f3e265] [cursor=pointer]:
+                  - checkbox "Checkbox 4 (+$48.00)" [ref=f3e266]
+                  - text: Checkbox 4 (+$48.00)
+            - generic [ref=f3e267]:
+              - generic [ref=f3e268]: "* Text"
+              - textbox "* Text" [ref=f3e269]:
+                - /placeholder: Text
+                - text: Prueba Apple Cinema
+            - generic [ref=f3e270]:
+              - generic [ref=f3e271]: "* Select"
+              - combobox "* Select" [ref=f3e272]:
+                - option "--- Please Select ---"
+                - option "Red (+$4.80)" [selected]
+                - option "Blue (+$3.60)"
+                - option "Green (+$1.20)"
+                - option "Yellow (+$2.40)"
+            - generic [ref=f3e273]:
+              - generic [ref=f3e274]: "* Textarea"
+              - textbox "* Textarea" [ref=f3e275]:
+                - /placeholder: Textarea
+                - text: Datos de prueba para validar la compra del producto.
+            - generic [ref=f3e276]:
+              - generic [ref=f3e277]: "* File"
+              - button " Upload File" [ref=f3e278] [cursor=pointer]:
+                - generic [ref=f3e279]: 
+                - text: Upload File
+            - generic [ref=f3e280]:
+              - generic [ref=f3e281]: "* Date"
+              - generic [ref=f3e282]:
+                - textbox "* Date" [ref=f3e283]: 2026-08-12
+                - button "" [ref=f3e285] [cursor=pointer]
+            - generic [ref=f3e287]:
+              - generic [ref=f3e288]: "* Time"
+              - generic [ref=f3e289]:
+                - textbox "* Time" [ref=f3e290]: 10:30
+                - button "" [ref=f3e292] [cursor=pointer]
+            - generic [ref=f3e294]:
+              - generic [ref=f3e295]: "* Date & Time"
+              - generic [ref=f3e296]:
+                - textbox "* Date & Time" [ref=f3e297]: 2026-08-12 10:30
+                - button "" [ref=f3e299] [cursor=pointer]
+            - generic [ref=f3e301]:
+              - generic [ref=f3e302]: Qty
+              - textbox "Qty" [ref=f3e303]: "2"
+              - button "Add to Cart" [ref=f3e304] [cursor=pointer]
+            - generic [ref=f3e305]:
+              - generic [ref=f3e306]: 
+              - text: This product has a minimum quantity of 2
+          - generic [ref=f3e307]:
+            - paragraph [ref=f3e308]:
+              - generic [ref=f3e309]: 
+              - generic [ref=f3e311]: 
+              - generic [ref=f3e313]: 
+              - generic [ref=f3e315]: 
+              - generic [ref=f3e317]: 
+              - link "0 reviews" [ref=f3e319] [cursor=pointer]:
+                - /url: ""
+              - text: /
+              - link "Write a review" [ref=f3e320] [cursor=pointer]:
+                - /url: ""
+            - separator [ref=f3e321]
+      - heading "Related Products" [level=3] [ref=f3e322]
+      - generic [ref=f3e323]:
+        - generic [ref=f3e325]:
+          - link [ref=f3e327] [cursor=pointer]:
+            - /url: http://opencart.abstracta.us:80/index.php?route=product/product&product_id=40
+            - img "iPhone" [ref=f3e328]
+          - generic [ref=f3e329]:
+            - heading [level=4] [ref=f3e330]:
+              - link "iPhone" [ref=f3e331] [cursor=pointer]:
+                - /url: http://opencart.abstracta.us:80/index.php?route=product/product&product_id=40
+            - paragraph [ref=f3e332]: iPhone is a revolutionary new mobile phone that allows you to make a call by simply tapping a name o..
+            - paragraph [ref=f3e333]:
+              - text: $123.20
+              - generic [ref=f3e334]: "Ex Tax: $101.00"
+          - generic [ref=f3e335]:
+            - button "Add to Cart " [ref=f3e336] [cursor=pointer]:
+              - text: Add to Cart
+              - generic [ref=f3e337]: 
+            - button "" [ref=f3e338] [cursor=pointer]
+            - button "" [ref=f3e340] [cursor=pointer]
+        - generic [ref=f3e343]:
+          - link [ref=f3e345] [cursor=pointer]:
+            - /url: http://opencart.abstracta.us:80/index.php?route=product/product&product_id=41
+            - img "iMac" [ref=f3e346]
+          - generic [ref=f3e347]:
+            - heading [level=4] [ref=f3e348]:
+              - link "iMac" [ref=f3e349] [cursor=pointer]:
+                - /url: http://opencart.abstracta.us:80/index.php?route=product/product&product_id=41
+            - paragraph [ref=f3e350]: Just when you thought iMac had everything, now there´s even more. More powerful Intel Core 2 Duo pro..
+            - paragraph [ref=f3e351]:
+              - text: $122.00
+              - generic [ref=f3e352]: "Ex Tax: $100.00"
+          - generic [ref=f3e353]:
+            - button "Add to Cart " [ref=f3e354] [cursor=pointer]:
+              - text: Add to Cart
+              - generic [ref=f3e355]: 
+            - button "" [ref=f3e356] [cursor=pointer]
+            - button "" [ref=f3e358] [cursor=pointer]
+  - text:         
+  - contentinfo [ref=f3e360]:
+    - generic [ref=f3e361]:
+      - generic [ref=f3e362]:
+        - generic [ref=f3e363]:
+          - heading "Information" [level=5] [ref=f3e364]
+          - list [ref=f3e365]:
+            - listitem [ref=f3e366]:
+              - link "About Us" [ref=f3e367] [cursor=pointer]:
+                - /url: http://opencart.abstracta.us:80/index.php?route=information/information&information_id=4
+            - listitem [ref=f3e368]:
+              - link "Delivery Information" [ref=f3e369] [cursor=pointer]:
+                - /url: http://opencart.abstracta.us:80/index.php?route=information/information&information_id=6
+            - listitem [ref=f3e370]:
+              - link "Privacy Policy" [ref=f3e371] [cursor=pointer]:
+                - /url: http://opencart.abstracta.us:80/index.php?route=information/information&information_id=3
+            - listitem [ref=f3e372]:
+              - link "Terms & Conditions" [ref=f3e373] [cursor=pointer]:
+                - /url: http://opencart.abstracta.us:80/index.php?route=information/information&information_id=5
+        - generic [ref=f3e374]:
+          - heading "Customer Service" [level=5] [ref=f3e375]
+          - list [ref=f3e376]:
+            - listitem [ref=f3e377]:
+              - link "Contact Us" [ref=f3e378] [cursor=pointer]:
+                - /url: http://opencart.abstracta.us:80/index.php?route=information/contact
+            - listitem [ref=f3e379]:
+              - link "Returns" [ref=f3e380] [cursor=pointer]:
+                - /url: https://opencart.abstracta.us:443/index.php?route=account/return/add
+            - listitem [ref=f3e381]:
+              - link "Site Map" [ref=f3e382] [cursor=pointer]:
+                - /url: http://opencart.abstracta.us:80/index.php?route=information/sitemap
+        - generic [ref=f3e383]:
+          - heading "Extras" [level=5] [ref=f3e384]
+          - list [ref=f3e385]:
+            - listitem [ref=f3e386]:
+              - link "Brands" [ref=f3e387] [cursor=pointer]:
+                - /url: http://opencart.abstracta.us:80/index.php?route=product/manufacturer
+            - listitem [ref=f3e388]:
+              - link "Gift Certificates" [ref=f3e389] [cursor=pointer]:
+                - /url: https://opencart.abstracta.us:443/index.php?route=account/voucher
+            - listitem [ref=f3e390]:
+              - link "Affiliate" [ref=f3e391] [cursor=pointer]:
+                - /url: https://opencart.abstracta.us:443/index.php?route=affiliate/login
+            - listitem [ref=f3e392]:
+              - link "Specials" [ref=f3e393] [cursor=pointer]:
+                - /url: http://opencart.abstracta.us:80/index.php?route=product/special
+        - generic [ref=f3e394]:
+          - heading "My Account" [level=5] [ref=f3e395]
+          - list [ref=f3e396]:
+            - listitem [ref=f3e397]:
+              - link "My Account" [ref=f3e398] [cursor=pointer]:
+                - /url: https://opencart.abstracta.us:443/index.php?route=account/account
+            - listitem [ref=f3e399]:
+              - link "Order History" [ref=f3e400] [cursor=pointer]:
+                - /url: https://opencart.abstracta.us:443/index.php?route=account/order
+            - listitem [ref=f3e401]:
+              - link "Wish List" [ref=f3e402] [cursor=pointer]:
+                - /url: https://opencart.abstracta.us:443/index.php?route=account/wishlist
+            - listitem [ref=f3e403]:
+              - link "Newsletter" [ref=f3e404] [cursor=pointer]:
+                - /url: https://opencart.abstracta.us:443/index.php?route=account/newsletter
+      - separator [ref=f3e405]
+      - paragraph [ref=f3e406]:
+        - text: Powered By
+        - link "OpenCart" [ref=f3e407] [cursor=pointer]:
+          - /url: http://www.opencart.com
+        - text: Your Store © 2026
+  - generic [ref=f3e408]:
+    - generic:
+      - link "Bitnami":
+        - /url: /bitnami/index.html
+        - img "Bitnami" [ref=f3e409] [cursor=pointer]

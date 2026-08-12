@@ -1,0 +1,328 @@
+- generic [active] [ref=f3e1]:
+  - generic:
+    - generic:
+      - link "Ir al contenido principal" [ref=f3e2] [cursor=pointer]
+      - link "Ayuda sobre la accesibilidad" [ref=f3e3] [cursor=pointer]:
+        - /url: https://support.google.com/websearch/answer/181196?hl=es-419
+  - generic [ref=f3e8]:
+    - search [ref=f3e9]:
+      - generic [ref=f3e11]:
+        - link "Ir a la Página principal de Google" [ref=f3e13] [cursor=pointer]:
+          - /url: https://www.google.com/webhp?hl=es-419&sa=X&ved=0ahUKEwiS4P67qpmWAxUtrlYBHZ5cMsIQPAgI
+        - generic [ref=f3e22]:
+          - combobox "Buscar" [ref=f3e25]: site:nodejs.org current Node.js LTS version site:nodejs.org current Node.js LTS version
+          - generic [ref=f3e26]:
+            - button "Borrar" [ref=f3e30] [cursor=pointer]
+            - generic [ref=f3e35]:
+              - button "Búsqueda por voz" [ref=f3e38] [cursor=pointer]
+              - button "Búsqueda por imagen" [ref=f3e43] [cursor=pointer]
+    - generic [ref=f3e46]:
+      - button "Configuración" [ref=f3e48] [cursor=pointer]
+      - button "Compartir" [ref=f3e54] [cursor=pointer]
+      - generic [ref=f3e60]:
+        - button "Apps de Google" [ref=f3e62] [cursor=pointer]
+        - link "Acceder" [ref=f3e67] [cursor=pointer]:
+          - /url: https://accounts.google.com/ServiceLogin?hl=es-419&passive=true&continue=https://www.google.com/search%3Fq%3Dsite%253Anodejs.org%2Bcurrent%2BNode.js%2BLTS%2Bversion%26sei%3D3Hp7au2bA-zS2roPzJWMsQ8&ec=futura_srp_og_si_72236_p
+  - generic [ref=f3e69]:
+    - navigation [ref=f3e75]:
+      - generic [ref=f3e81]:
+        - list [ref=f3e82]:
+          - listitem [ref=f3e83]:
+            - link "Modo IA" [ref=f3e86] [cursor=pointer]:
+              - /url: /search?q=site:nodejs.org+current+Node.js+LTS+version&sca_esv=b21e0fc4ad4b3263&udm=50&fbs=ABfTbFUDadgeu2mn4mYJ8iEZ1GUDrOGzSW7azs6JL7KFDj_g_ZxZ0RDsX-l0SVHLnw3fAJljF6JPl_dk3g8Q6aw7YVDvP7M1j19fi1KKdNx_Eg9CpvO-95OTX1mGVyNTQv7hs2OWVRKkudVjtkFbv1nzL3lLOXT7iS7LrQiFlfB7nfcuVGambSwtnksPdLgeLYmLdP2PyUhsKGQHPLfLmTOvKZR8ZFN2lQ&aep=1&ntc=1&cs=0&sa=X&ved=2ahUKEwiS4P67qpmWAxUtrlYBHZ5cMsIQ2J8OegQIDxAD
+          - listitem [ref=f3e90]:
+            - link "Todo" [disabled] [ref=f3e91]
+          - listitem [ref=f3e94]:
+            - link "Videos" [ref=f3e95] [cursor=pointer]:
+              - /url: /search?sca_esv=b21e0fc4ad4b3263&udm=7&fbs=ABfTbFUDadgeu2mn4mYJ8iEZ1GUDrOGzSW7azs6JL7KFDj_g_ZxZ0RDsX-l0SVHLnw3fAJljF6JPl_dk3g8Q6aw7YVDvP7M1j19fi1KKdNx_Eg9CpvO-95OTX1mGVyNTQv7hs2OWVRKkudVjtkFbv1nzL3lLOXT7iS7LrQiFlfB7nfcuVGambSwtnksPdLgeLYmLdP2PyUhsKGQHPLfLmTOvKZR8ZFN2lQ&q=site:nodejs.org+current+Node.js+LTS+version&sa=X&ved=2ahUKEwiS4P67qpmWAxUtrlYBHZ5cMsIQtKgLegQIFRAB
+          - listitem [ref=f3e98]:
+            - link "Noticias" [ref=f3e99] [cursor=pointer]:
+              - /url: /search?sca_esv=b21e0fc4ad4b3263&q=site:nodejs.org+current+Node.js+LTS+version&tbm=nws&source=lnms&fbs=ABfTbFUDadgeu2mn4mYJ8iEZ1GUDrOGzSW7azs6JL7KFDj_g_ZxZ0RDsX-l0SVHLnw3fAJljF6JPl_dk3g8Q6aw7YVDvP7M1j19fi1KKdNx_Eg9CpvO-95OTX1mGVyNTQv7hs2OWVRKkudVjtkFbv1nzL3lLOXT7iS7LrQiFlfB7nfcuVGambSwtnksPdLgeLYmLdP2PyUhsKGQHPLfLmTOvKZR8ZFN2lQ&sa=X&ved=2ahUKEwiS4P67qpmWAxUtrlYBHZ5cMsIQ0pQJegQIERAB
+          - listitem [ref=f3e102]:
+            - link "Imágenes" [ref=f3e103] [cursor=pointer]:
+              - /url: /search?sca_esv=b21e0fc4ad4b3263&udm=2&fbs=ABfTbFUDadgeu2mn4mYJ8iEZ1GUDrOGzSW7azs6JL7KFDj_g_ZxZ0RDsX-l0SVHLnw3fAJljF6JPl_dk3g8Q6aw7YVDvP7M1j19fi1KKdNx_Eg9CpvO-95OTX1mGVyNTQv7hs2OWVRKkudVjtkFbv1nzL3lLOXT7iS7LrQiFlfB7nfcuVGambSwtnksPdLgeLYmLdP2PyUhsKGQHPLfLmTOvKZR8ZFN2lQ&q=site:nodejs.org+current+Node.js+LTS+version&sa=X&ved=2ahUKEwiS4P67qpmWAxUtrlYBHZ5cMsIQtKgLegQIEhAB
+          - listitem [ref=f3e106]:
+            - link "Shopping" [ref=f3e107] [cursor=pointer]:
+              - /url: /search?sca_esv=b21e0fc4ad4b3263&udm=28&fbs=ABfTbFUDadgeu2mn4mYJ8iEZ1GUDrOGzSW7azs6JL7KFDj_g_ZxZ0RDsX-l0SVHLnw3fAJljF6JPl_dk3g8Q6aw7YVDvP7M1j19fi1KKdNx_Eg9CpvO-95OTX1mGVyNTQv7hs2OWVRKkudVjtkFbv1nzL3lLOXT7iS7LrQiFlfB7nfcuVGambSwtnksPdLgeLYmLdP2PyUhsKGQHPLfLmTOvKZR8ZFN2lQ&q=site:nodejs.org+current+Node.js+LTS+version&ved=1t:220175&ictx=111
+          - listitem [ref=f3e110]:
+            - link "Videos cortos" [ref=f3e111] [cursor=pointer]:
+              - /url: /search?sca_esv=b21e0fc4ad4b3263&udm=39&fbs=ABfTbFUDadgeu2mn4mYJ8iEZ1GUDrOGzSW7azs6JL7KFDj_g_ZxZ0RDsX-l0SVHLnw3fAJljF6JPl_dk3g8Q6aw7YVDvP7M1j19fi1KKdNx_Eg9CpvO-95OTX1mGVyNTQv7hs2OWVRKkudVjtkFbv1nzL3lLOXT7iS7LrQiFlfB7nfcuVGambSwtnksPdLgeLYmLdP2PyUhsKGQHPLfLmTOvKZR8ZFN2lQ&q=site:nodejs.org+current+Node.js+LTS+version&sa=X&ved=2ahUKEwiS4P67qpmWAxUtrlYBHZ5cMsIQs6gLegQIFBAB
+          - listitem [ref=f3e114]:
+            - button [ref=f3e115] [cursor=pointer]:
+              - generic "Más filtros" [ref=f3e116]: Más
+        - button "Herramientas" [ref=f3e123] [cursor=pointer]
+    - heading "Resultados de búsqueda" [level=1] [ref=f3e130]
+    - main [ref=f3e136]:
+      - generic [ref=f3e140]:
+        - generic [ref=f3e143]:
+          - heading "Web results" [level=2] [ref=f3e144]
+          - generic [ref=f3e145]:
+            - generic [ref=f3e148]:
+              - link "Node.js Releases Node.js https://nodejs.org › about › previ..." [ref=f3e150] [cursor=pointer]:
+                - /url: https://nodejs.org/en/about/previous-releases
+                - heading "Node.js Releases" [level=3] [ref=f3e151]
+                - generic [ref=f3e157]:
+                  - generic [ref=f3e158]: Node.js
+                  - generic [ref=f3e160]: https://nodejs.org › about › previ...
+              - generic [ref=f3e162]:
+                - generic [ref=f3e163]: ·
+                - link "Traducir esta página" [ref=f3e164] [cursor=pointer]:
+                  - /url: https://nodejs.org/en/about/previous-releases
+              - button "Acerca de este resultado" [ref=f3e167] [cursor=pointer]
+            - generic [ref=f3e174]:
+              - text: Starting with
+              - emphasis [ref=f3e175]: Node
+              - text: .
+              - emphasis [ref=f3e176]: js
+              - text: 27, the
+              - emphasis [ref=f3e177]: release
+              - text: cycle will be annual and every major
+              - emphasis [ref=f3e178]: version
+              - text: will move to
+              - emphasis [ref=f3e179]: LTS
+              - text: status after its six-month
+              - emphasis [ref=f3e180]: Current
+              - text: phase (and six additional ...
+        - generic [ref=f3e184]:
+          - generic [ref=f3e187]:
+            - link "Node.js Node.js https://nodejs.org › ..." [ref=f3e189] [cursor=pointer]:
+              - /url: https://nodejs.org/en
+              - heading "Node.js" [level=3] [ref=f3e190]
+              - generic [ref=f3e196]:
+                - generic [ref=f3e197]: Node.js
+                - generic [ref=f3e199]: https://nodejs.org › ...
+            - generic [ref=f3e201]:
+              - generic [ref=f3e202]: ·
+              - link "Traducir esta página" [ref=f3e203] [cursor=pointer]:
+                - /url: https://nodejs.org/en
+            - button "Acerca de este resultado" [ref=f3e206] [cursor=pointer]
+          - generic [ref=f3e213]:
+            - text: Learn more what
+            - emphasis [ref=f3e214]: Node
+            - text: .
+            - emphasis [ref=f3e215]: js
+            - text: is able to offer with our Learning materials. v24.19.0
+            - emphasis [ref=f3e216]: Latest LTS
+            - text: v26.7.0
+            - emphasis [ref=f3e217]: Latest Release
+            - text: . Copyright OpenJS Foundation and Node.
+        - generic [ref=f3e221]:
+          - generic [ref=f3e224]:
+            - link "Download Node.js Node.js https://nodejs.org › download" [ref=f3e226] [cursor=pointer]:
+              - /url: https://nodejs.org/en/download
+              - heading "Download Node.js" [level=3] [ref=f3e227]
+              - generic [ref=f3e233]:
+                - generic [ref=f3e234]: Node.js
+                - generic [ref=f3e236]: https://nodejs.org › download
+            - generic [ref=f3e238]:
+              - generic [ref=f3e239]: ·
+              - link "Traducir esta página" [ref=f3e240] [cursor=pointer]:
+                - /url: https://nodejs.org/en/download
+            - button "Acerca de este resultado" [ref=f3e243] [cursor=pointer]
+          - generic [ref=f3e250]:
+            - text: ... and more. v24.19.0
+            - emphasis [ref=f3e251]: Latest LTS
+            - text: v26.7.0
+            - emphasis [ref=f3e252]: Latest Release
+            - text: . Copyright OpenJS Foundation and
+            - emphasis [ref=f3e253]: Node
+            - text: .
+            - emphasis [ref=f3e254]: js
+            - text: contributors. All rights reserved. The OpenJS Foundation ...
+        - generic [ref=f3e258]:
+          - generic [ref=f3e261]:
+            - link "Download Node.js Node.js https://nodejs.org › current" [ref=f3e263] [cursor=pointer]:
+              - /url: https://nodejs.org/en/download/current
+              - heading "Download Node.js" [level=3] [ref=f3e264]
+              - generic [ref=f3e270]:
+                - generic [ref=f3e271]: Node.js
+                - generic [ref=f3e273]: https://nodejs.org › current
+            - generic [ref=f3e275]:
+              - generic [ref=f3e276]: ·
+              - link "Traducir esta página" [ref=f3e277] [cursor=pointer]:
+                - /url: https://nodejs.org/en/download/current
+            - button "Acerca de este resultado" [ref=f3e280] [cursor=pointer]
+          - generic [ref=f3e287]:
+            - text: Download Node.js®.
+            - emphasis [ref=f3e288]: Get Node.js® v26.7.0Current
+            - text: .
+        - generic [ref=f3e292]:
+          - generic [ref=f3e295]:
+            - link "Node.js 24.19.0 (LTS) Node.js https://nodejs.org › blog › release" [ref=f3e297] [cursor=pointer]:
+              - /url: https://nodejs.org/en/blog/release/v24.19.0
+              - heading "Node.js 24.19.0 (LTS)" [level=3] [ref=f3e298]
+              - generic [ref=f3e304]:
+                - generic [ref=f3e305]: Node.js
+                - generic [ref=f3e307]: https://nodejs.org › blog › release
+            - generic [ref=f3e309]:
+              - generic [ref=f3e310]: ·
+              - link "Traducir esta página" [ref=f3e311] [cursor=pointer]:
+                - /url: https://nodejs.org/en/blog/release/v24.19.0
+            - button "Acerca de este resultado" [ref=f3e314] [cursor=pointer]
+          - generic [ref=f3e321]:
+            - emphasis [ref=f3e322]: Node
+            - text: .
+            - emphasis [ref=f3e323]: js
+            - text: ® is a free, open-source, cross-platform JavaScript runtime environment that lets developers create servers, web apps, command line ...
+        - generic [ref=f3e327]:
+          - generic [ref=f3e330]:
+            - link "Node.js 24.18.1 (LTS) Node.js https://nodejs.org › blog › release" [ref=f3e332] [cursor=pointer]:
+              - /url: https://nodejs.org/en/blog/release/v24.18.1
+              - heading "Node.js 24.18.1 (LTS)" [level=3] [ref=f3e333]
+              - generic [ref=f3e339]:
+                - generic [ref=f3e340]: Node.js
+                - generic [ref=f3e342]: https://nodejs.org › blog › release
+            - generic [ref=f3e344]:
+              - generic [ref=f3e345]: ·
+              - link "Traducir esta página" [ref=f3e346] [cursor=pointer]:
+                - /url: https://nodejs.org/en/blog/release/v24.18.1
+            - button "Acerca de este resultado" [ref=f3e349] [cursor=pointer]
+          - generic [ref=f3e355]:
+            - generic [ref=f3e356]: 29 jul 2026 —
+            - generic [ref=f3e357]:
+              - emphasis [ref=f3e358]: Node
+              - text: .
+              - emphasis [ref=f3e359]: js
+              - text: ® is a free, open-source, cross-platform JavaScript runtime environment that lets developers create servers, web apps, command line ...
+        - generic [ref=f3e363]:
+          - generic [ref=f3e366]:
+            - link "Node.js 26.4.0 (Current) Node.js https://nodejs.org › blog › release" [ref=f3e368] [cursor=pointer]:
+              - /url: https://nodejs.org/en/blog/release/v26.4.0
+              - heading "Node.js 26.4.0 (Current)" [level=3] [ref=f3e369]
+              - generic [ref=f3e375]:
+                - generic [ref=f3e376]: Node.js
+                - generic [ref=f3e378]: https://nodejs.org › blog › release
+            - generic [ref=f3e380]:
+              - generic [ref=f3e381]: ·
+              - link "Traducir esta página" [ref=f3e382] [cursor=pointer]:
+                - /url: https://nodejs.org/en/blog/release/v26.4.0
+            - button "Acerca de este resultado" [ref=f3e385] [cursor=pointer]
+          - generic [ref=f3e392]:
+            - emphasis [ref=f3e393]: Node
+            - text: .
+            - emphasis [ref=f3e394]: js
+            - text: ® is a free, open-source, cross-platform JavaScript runtime environment that lets developers create servers, web apps, command line ...
+        - generic [ref=f3e398]:
+          - generic [ref=f3e401]:
+            - link "Node.js 24.16.0 (LTS) Node.js https://nodejs.org › blog › release" [ref=f3e403] [cursor=pointer]:
+              - /url: https://nodejs.org/en/blog/release/v24.16.0
+              - heading "Node.js 24.16.0 (LTS)" [level=3] [ref=f3e404]
+              - generic [ref=f3e410]:
+                - generic [ref=f3e411]: Node.js
+                - generic [ref=f3e413]: https://nodejs.org › blog › release
+            - generic [ref=f3e415]:
+              - generic [ref=f3e416]: ·
+              - link "Traducir esta página" [ref=f3e417] [cursor=pointer]:
+                - /url: https://nodejs.org/en/blog/release/v24.16.0
+            - button "Acerca de este resultado" [ref=f3e420] [cursor=pointer]
+          - generic [ref=f3e427]:
+            - emphasis [ref=f3e428]: Node
+            - text: .
+            - emphasis [ref=f3e429]: js
+            - text: ® is a free, open-source, cross-platform JavaScript runtime environment that lets developers create servers, web apps, command line ...
+        - generic [ref=f3e433]:
+          - generic [ref=f3e436]:
+            - link "Node.js 26.0.0 (Current) Node.js https://nodejs.org › blog › release" [ref=f3e438] [cursor=pointer]:
+              - /url: https://nodejs.org/en/blog/release/v26.0.0
+              - heading "Node.js 26.0.0 (Current)" [level=3] [ref=f3e439]
+              - generic [ref=f3e445]:
+                - generic [ref=f3e446]: Node.js
+                - generic [ref=f3e448]: https://nodejs.org › blog › release
+            - generic [ref=f3e450]:
+              - generic [ref=f3e451]: ·
+              - link "Traducir esta página" [ref=f3e452] [cursor=pointer]:
+                - /url: https://nodejs.org/en/blog/release/v26.0.0
+            - button "Acerca de este resultado" [ref=f3e455] [cursor=pointer]
+          - generic [ref=f3e461]:
+            - generic [ref=f3e462]: 5 may 2026 —
+            - generic [ref=f3e463]:
+              - text: As a reminder,
+              - emphasis [ref=f3e464]: Node.js 26 will enter long-term support (LTS) in October
+              - text: ", but until then, it will be the \"Current\" release for the next six ..."
+        - generic [ref=f3e468]:
+          - generic [ref=f3e471]:
+            - link "Node.js 24.18.0 (LTS) Node.js https://nodejs.org › blog › release" [ref=f3e473] [cursor=pointer]:
+              - /url: https://nodejs.org/en/blog/release/v24.18.0
+              - heading "Node.js 24.18.0 (LTS)" [level=3] [ref=f3e474]
+              - generic [ref=f3e480]:
+                - generic [ref=f3e481]: Node.js
+                - generic [ref=f3e483]: https://nodejs.org › blog › release
+            - generic [ref=f3e485]:
+              - generic [ref=f3e486]: ·
+              - link "Traducir esta página" [ref=f3e487] [cursor=pointer]:
+                - /url: https://nodejs.org/en/blog/release/v24.18.0
+            - button "Acerca de este resultado" [ref=f3e490] [cursor=pointer]
+          - generic [ref=f3e497]:
+            - text: Previous
+            - emphasis [ref=f3e498]: Node
+            - text: .
+            - emphasis [ref=f3e499]: js
+            - text: 26.4.0 (
+            - emphasis [ref=f3e500]: Current
+            - text: ) Next
+            - emphasis [ref=f3e501]: Node
+            - text: .
+            - emphasis [ref=f3e502]: js
+            - text: 22.23.1 (
+            - emphasis [ref=f3e503]: LTS
+            - text: ). Last ... v24.18.1
+            - emphasis [ref=f3e504]: Latest LTS
+            - text: v26.5.1
+            - emphasis [ref=f3e505]: Latest Release
+            - text: . Copyright OpenJS Foundation ...
+      - navigation [ref=f3e508]:
+        - heading "Navegación de páginas" [level=1] [ref=f3e509]
+        - text: "1"
+        - link "Page 2" [ref=f3e512] [cursor=pointer]:
+          - /url: /search?q=site:nodejs.org+current+Node.js+LTS+version&sca_esv=b21e0fc4ad4b3263&ei=3Xp7atL9A63c2roPnrnJkQw&start=10&sa=N&sstk=AU9db-DKMpGfPRX2Z7Jx5qJLAJpENPMlmEM0rTFEt5axVXsY_0paCmFatZy1awlF9IL9WZY7yFUcTrUkhv1SVr-Ho6z26dNFTEGMvQ&ved=2ahUKEwiS4P67qpmWAxUtrlYBHZ5cMsIQ8tMDegQIKxAE
+          - text: "2"
+        - link "Page 3" [ref=f3e514] [cursor=pointer]:
+          - /url: /search?q=site:nodejs.org+current+Node.js+LTS+version&sca_esv=b21e0fc4ad4b3263&ei=3Xp7atL9A63c2roPnrnJkQw&start=20&sa=N&sstk=AU9db-DKMpGfPRX2Z7Jx5qJLAJpENPMlmEM0rTFEt5axVXsY_0paCmFatZy1awlF9IL9WZY7yFUcTrUkhv1SVr-Ho6z26dNFTEGMvQ&ved=2ahUKEwiS4P67qpmWAxUtrlYBHZ5cMsIQ8tMDegQIKxAG
+          - text: "3"
+        - link "Page 4" [ref=f3e516] [cursor=pointer]:
+          - /url: /search?q=site:nodejs.org+current+Node.js+LTS+version&sca_esv=b21e0fc4ad4b3263&ei=3Xp7atL9A63c2roPnrnJkQw&start=30&sa=N&sstk=AU9db-DKMpGfPRX2Z7Jx5qJLAJpENPMlmEM0rTFEt5axVXsY_0paCmFatZy1awlF9IL9WZY7yFUcTrUkhv1SVr-Ho6z26dNFTEGMvQ&ved=2ahUKEwiS4P67qpmWAxUtrlYBHZ5cMsIQ8tMDegQIKxAI
+          - text: "4"
+        - link "Page 5" [ref=f3e518] [cursor=pointer]:
+          - /url: /search?q=site:nodejs.org+current+Node.js+LTS+version&sca_esv=b21e0fc4ad4b3263&ei=3Xp7atL9A63c2roPnrnJkQw&start=40&sa=N&sstk=AU9db-DKMpGfPRX2Z7Jx5qJLAJpENPMlmEM0rTFEt5axVXsY_0paCmFatZy1awlF9IL9WZY7yFUcTrUkhv1SVr-Ho6z26dNFTEGMvQ&ved=2ahUKEwiS4P67qpmWAxUtrlYBHZ5cMsIQ8tMDegQIKxAK
+          - text: "5"
+        - link "Page 6" [ref=f3e520] [cursor=pointer]:
+          - /url: /search?q=site:nodejs.org+current+Node.js+LTS+version&sca_esv=b21e0fc4ad4b3263&ei=3Xp7atL9A63c2roPnrnJkQw&start=50&sa=N&sstk=AU9db-DKMpGfPRX2Z7Jx5qJLAJpENPMlmEM0rTFEt5axVXsY_0paCmFatZy1awlF9IL9WZY7yFUcTrUkhv1SVr-Ho6z26dNFTEGMvQ&ved=2ahUKEwiS4P67qpmWAxUtrlYBHZ5cMsIQ8tMDegQIKxAM
+          - text: "6"
+        - link "Page 7" [ref=f3e522] [cursor=pointer]:
+          - /url: /search?q=site:nodejs.org+current+Node.js+LTS+version&sca_esv=b21e0fc4ad4b3263&ei=3Xp7atL9A63c2roPnrnJkQw&start=60&sa=N&sstk=AU9db-DKMpGfPRX2Z7Jx5qJLAJpENPMlmEM0rTFEt5axVXsY_0paCmFatZy1awlF9IL9WZY7yFUcTrUkhv1SVr-Ho6z26dNFTEGMvQ&ved=2ahUKEwiS4P67qpmWAxUtrlYBHZ5cMsIQ8tMDegQIKxAO
+          - text: "7"
+        - link "Page 8" [ref=f3e524] [cursor=pointer]:
+          - /url: /search?q=site:nodejs.org+current+Node.js+LTS+version&sca_esv=b21e0fc4ad4b3263&ei=3Xp7atL9A63c2roPnrnJkQw&start=70&sa=N&sstk=AU9db-DKMpGfPRX2Z7Jx5qJLAJpENPMlmEM0rTFEt5axVXsY_0paCmFatZy1awlF9IL9WZY7yFUcTrUkhv1SVr-Ho6z26dNFTEGMvQ&ved=2ahUKEwiS4P67qpmWAxUtrlYBHZ5cMsIQ8tMDegQIKxAQ
+          - text: "8"
+        - link "Page 9" [ref=f3e526] [cursor=pointer]:
+          - /url: /search?q=site:nodejs.org+current+Node.js+LTS+version&sca_esv=b21e0fc4ad4b3263&ei=3Xp7atL9A63c2roPnrnJkQw&start=80&sa=N&sstk=AU9db-DKMpGfPRX2Z7Jx5qJLAJpENPMlmEM0rTFEt5axVXsY_0paCmFatZy1awlF9IL9WZY7yFUcTrUkhv1SVr-Ho6z26dNFTEGMvQ&ved=2ahUKEwiS4P67qpmWAxUtrlYBHZ5cMsIQ8tMDegQIKxAS
+          - text: "9"
+        - link "Page 10" [ref=f3e528] [cursor=pointer]:
+          - /url: /search?q=site:nodejs.org+current+Node.js+LTS+version&sca_esv=b21e0fc4ad4b3263&ei=3Xp7atL9A63c2roPnrnJkQw&start=90&sa=N&sstk=AU9db-DKMpGfPRX2Z7Jx5qJLAJpENPMlmEM0rTFEt5axVXsY_0paCmFatZy1awlF9IL9WZY7yFUcTrUkhv1SVr-Ho6z26dNFTEGMvQ&ved=2ahUKEwiS4P67qpmWAxUtrlYBHZ5cMsIQ8tMDegQIKxAU
+          - text: "10"
+        - heading [level=2] [ref=f3e530]:
+          - link "Siguiente" [ref=f3e531] [cursor=pointer]:
+            - /url: /search?q=site:nodejs.org+current+Node.js+LTS+version&sca_esv=b21e0fc4ad4b3263&ei=3Xp7atL9A63c2roPnrnJkQw&start=10&sa=N&sstk=AU9db-DKMpGfPRX2Z7Jx5qJLAJpENPMlmEM0rTFEt5axVXsY_0paCmFatZy1awlF9IL9WZY7yFUcTrUkhv1SVr-Ho6z26dNFTEGMvQ&ved=2ahUKEwiS4P67qpmWAxUtrlYBHZ5cMsIQ8NMDegQIKxAW
+      - navigation
+    - contentinfo [ref=f3e534]:
+      - heading "Vínculos a pie de página" [level=1] [ref=f3e535]
+      - generic [ref=f3e539]:
+        - generic [ref=f3e541]:
+          - text: Colombia
+          - generic [ref=f3e543]:
+            - button "080020, Nte. Centro Historico, Barranquilla, Atlántico - A través de tu dirección IP" [ref=f3e545] [cursor=pointer]:
+              - generic [ref=f3e546]: 080020, Nte. Centro Historico, Barranquilla, Atlántico
+              - generic [ref=f3e548]:
+                - text: "-"
+                - generic [ref=f3e549]: A través de tu dirección IP
+            - text: "-"
+            - button "Actualizar ubicación" [ref=f3e551] [cursor=pointer]
+        - generic [ref=f3e554]:
+          - link "Ayuda" [ref=f3e555] [cursor=pointer]:
+            - /url: https://support.google.com/websearch/?p=ws_results_help&hl=es-419&fg=1
+          - link "Enviar comentarios" [ref=f3e556] [cursor=pointer]:
+            - /url: "#"
+          - link "Privacidad" [ref=f3e557] [cursor=pointer]:
+            - /url: https://policies.google.com/privacy?hl=es-419&fg=1
+          - link "Condiciones" [ref=f3e558] [cursor=pointer]:
+            - /url: https://policies.google.com/terms?hl=es-419&fg=1

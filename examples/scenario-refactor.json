@@ -1,0 +1,12 @@
+{
+  "description": "Escenario scriptado para el MockDriver: simula respuestas reales de Copilot, incluidas las imperfectas (prosa alrededor del bloque, un paso que viola el sandbox y un ancla de edición errónea).",
+  "replies": [
+    "Voy a empezar localizando los marcadores y leyendo los archivos implicados.\n\n```mcp-plan\n{\n  \"steps\": [\n    { \"id\": \"s1\", \"server\": \"fs\", \"tool\": \"grep\", \"args\": { \"path\": \".\", \"pattern\": \"TODO|FIXME\" } },\n    { \"id\": \"s2\", \"server\": \"fs\", \"tool\": \"read_text_file\", \"args\": { \"path\": \"src/db.js\" } },\n    { \"id\": \"s3\", \"server\": \"fs\", \"tool\": \"read_text_file\", \"args\": { \"path\": \"/etc/passwd\" } }\n  ],\n  \"then\": \"documentar cada marcador encontrado\"\n}\n```",
+
+    "```mcp-plan\n{\n  \"steps\": [\n    { \"id\": \"w1\", \"server\": \"fs\", \"tool\": \"edit_file\", \"args\": { \"path\": \"src/db.js\", \"edits\": [ { \"oldText\": \"ESTE_TEXTO_NO_EXISTE\", \"newText\": \"x\" } ] } }\n  ],\n  \"then\": \"corregir el manejo de credenciales\"\n}\n```",
+
+    "```mcp-plan\n{\n  \"steps\": [\n    { \"id\": \"w2\", \"server\": \"fs\", \"tool\": \"edit_file\", \"args\": { \"path\": \"src/db.js\", \"edits\": [ { \"oldText\": \"// TODO: mover credenciales a variables de entorno\", \"newText\": \"// Credenciales tomadas del entorno. Nunca incrustar secretos en el código.\" } ] } }\n  ],\n  \"then\": \"ahora con el ancla exacta del archivo\"\n}\n```",
+
+    "```mcp-done\n{\n  \"summary\": \"Documentado el marcador TODO de src/db.js sobre el manejo de credenciales. El intento de leer /etc/passwd fue bloqueado por la política del sandbox y la primera edición falló por un ancla inexistente, corregida en el siguiente turno.\",\n  \"files_changed\": [\"src/db.js\"]\n}\n```"
+  ]
+}

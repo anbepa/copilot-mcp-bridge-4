@@ -1,0 +1,193 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - link "Skip to content" [ref=e4] [cursor=pointer]:
+        - /url: "#main"
+      - navigation [ref=e5]:
+        - generic [ref=e6]:
+          - generic [ref=e7]:
+            - link "Home" [ref=e8] [cursor=pointer]:
+              - /url: /en
+              - img "Node.js logo" [ref=e9]
+            - button "Toggle navigation menu" [ref=e20] [cursor=pointer]
+          - checkbox "Toggle navigation menu" [ref=e23]
+    - main [ref=e25]:
+      - heading "Download Node.js®" [level=1] [ref=e26]
+      - generic [ref=e27]:
+        - paragraph [ref=e28]:
+          - text: Get Node.js®
+          - combobox "Version" [ref=e30] [cursor=pointer]:
+            - generic:
+              - generic: v24.19.0
+              - generic: LTS
+          - text: for
+          - combobox "Operating System" [ref=e34] [cursor=pointer]:
+            - generic: macOS
+          - text: using
+          - combobox "Platform" [ref=e38] [cursor=pointer]:
+            - generic: nvm
+          - text: with
+          - combobox "Package Manager" [ref=e42] [cursor=pointer]:
+            - generic: npm
+        - generic [ref=e45]:
+          - generic [ref=e46]:
+            - generic [ref=e47]: Info
+            - generic [ref=e48]:
+              - text: Want new features sooner? Get the
+              - link "latest Node.js version" [ref=e49] [cursor=pointer]:
+                - /url: /en/download/current
+              - text: instead and try the latest improvements!
+          - generic [ref=e50]:
+            - code [ref=e52]:
+              - generic [ref=e53]: "# Download and install nvm:"
+              - generic [ref=e54]: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.6/install.sh | bash
+              - generic [ref=e56]: "# in lieu of restarting the shell"
+              - generic [ref=e57]: \. "$HOME/.nvm/nvm.sh"
+              - generic [ref=e59]: "# Download and install Node.js:"
+              - generic [ref=e60]: nvm install 24
+              - generic [ref=e62]: "# Verify the Node.js version:"
+              - generic [ref=e63]: "node -v # Should print \"v24.19.0\"."
+              - generic [ref=e65]: "# Verify npm version:"
+              - generic [ref=e66]: "npm -v # Should print \"11.17.0\"."
+            - generic [ref=e67]:
+              - generic [ref=e68]: Bash
+              - button "Copy to clipboard" [ref=e69] [cursor=pointer]
+          - generic [ref=e72]:
+            - text: "\"nvm\" is a cross-platform Node.js version manager. If you encounter any issues please visit"
+            - link "nvm's website" [ref=e73] [cursor=pointer]:
+              - /url: https://github.com/nvm-sh/nvm
+        - paragraph [ref=e76]:
+          - text: Or get a prebuilt Node.js® for
+          - combobox "Operating System" [ref=e78] [cursor=pointer]:
+            - generic: macOS
+          - text: running a
+          - combobox "Platform" [ref=e82] [cursor=pointer]:
+            - generic: ARM64
+          - text: architecture.
+        - generic [ref=e85]:
+          - button "macOS Installer (.pkg)" [ref=e86] [cursor=pointer]
+          - button "Standalone Binary (.gz)" [ref=e89] [cursor=pointer]
+      - generic [ref=e92]:
+        - paragraph [ref=e93]:
+          - text: Read the
+          - link "changelog" [ref=e94] [cursor=pointer]:
+            - /url: https://github.com/nodejs/node/releases/tag/v24.19.0
+          - text: or
+          - link "blog post" [ref=e97] [cursor=pointer]:
+            - /url: /en/blog/release/v24.19.0
+          - text: for this version.
+        - paragraph [ref=e98]:
+          - text: Learn more about
+          - link "Node.js releases" [ref=e99] [cursor=pointer]:
+            - /url: /en/about/previous-releases
+          - text: ", including the release schedule and LTS status."
+        - paragraph [ref=e100]:
+          - text: Learn how to
+          - link "verify" [ref=e101] [cursor=pointer]:
+            - /url: https://github.com/nodejs/node#verifying-binaries
+          - text: signed SHASUMS.
+        - paragraph [ref=e104]:
+          - text: Looking for Node.js source? Download a signed
+          - link "Node.js source" [ref=e105] [cursor=pointer]:
+            - /url: https://nodejs.org/dist/v24.19.0/node-v24.19.0.tar.gz
+          - text: tarball.
+        - paragraph [ref=e108]:
+          - text: Check out our
+          - link "nightly" [ref=e109] [cursor=pointer]:
+            - /url: https://nodejs.org/download/nightly/
+          - text: binaries or all
+          - link "previous releases" [ref=e112] [cursor=pointer]:
+            - /url: /en/download/archive/current
+          - text: or the
+          - link "unofficial" [ref=e113] [cursor=pointer]:
+            - /url: https://unofficial-builds.nodejs.org/download/
+          - text: binaries for other platforms.
+      - separator [ref=e116]
+      - generic [ref=e117]:
+        - heading "Proudly supported by the partners below:" [level=2] [ref=e118]
+        - paragraph [ref=e120]:
+          - text: We are able to serve Node.js's downloads and maintain our infrastructure proudly due to the support of these partners,
+          - link "and more" [ref=e121] [cursor=pointer]:
+            - /url: /en/about/partners
+          - text: .
+        - generic [ref=e123]:
+          - button "DigitalOcean" [ref=e124] [cursor=pointer]
+          - button "Cloudflare" [ref=e151] [cursor=pointer]
+          - button "MacStadium" [ref=e165] [cursor=pointer]
+    - contentinfo [ref=e169]:
+      - generic [ref=e170]:
+        - generic [ref=e171]:
+          - generic [ref=e173]:
+            - link "v24.19.0 Latest LTS" [ref=e174] [cursor=pointer]:
+              - /url: /blog/release/v24.19.0
+              - generic [ref=e175]: v24.19.0
+              - generic [ref=e176]: Latest LTS
+            - link "v26.7.0 Latest Release" [ref=e177] [cursor=pointer]:
+              - /url: /blog/release/v26.7.0
+              - generic [ref=e178]: v26.7.0
+              - generic [ref=e179]: Latest Release
+          - generic [ref=e181]:
+            - link [ref=e182] [cursor=pointer]:
+              - /url: https://github.com/nodejs/node
+              - img "https://github.com/nodejs/node" [ref=e184]
+            - link [ref=e186] [cursor=pointer]:
+              - /url: https://discord.gg/nodejs
+              - img "https://discord.gg/nodejs" [ref=e188]
+            - link [ref=e190] [cursor=pointer]:
+              - /url: https://social.lfx.dev/@nodejs
+              - img "https://social.lfx.dev/@nodejs" [ref=e192]
+            - link [ref=e195] [cursor=pointer]:
+              - /url: https://bsky.app/profile/nodejs.org
+              - img "https://bsky.app/profile/nodejs.org" [ref=e197]
+            - link [ref=e199] [cursor=pointer]:
+              - /url: https://twitter.com/nodejs
+              - img "https://twitter.com/nodejs" [ref=e201]
+            - link [ref=e203] [cursor=pointer]:
+              - /url: https://slack-invite.openjsf.org/
+              - img "https://slack-invite.openjsf.org/" [ref=e205]
+            - link [ref=e210] [cursor=pointer]:
+              - /url: https://www.linkedin.com/company/node-js
+              - img "https://www.linkedin.com/company/node-js" [ref=e212]
+        - generic [ref=e214]:
+          - paragraph [ref=e215]:
+            - text: Copyright
+            - link "OpenJS Foundation" [ref=e216] [cursor=pointer]:
+              - /url: https://openjsf.org/
+            - text: and Node.js contributors. All rights reserved. The
+            - link "OpenJS Foundation" [ref=e217] [cursor=pointer]:
+              - /url: https://openjsf.org/
+            - text: has registered trademarks and uses trademarks. For a list of trademarks of the
+            - link "OpenJS Foundation" [ref=e218] [cursor=pointer]:
+              - /url: https://openjsf.org/
+            - text: ", please see our"
+            - link "Trademark Policy" [ref=e219] [cursor=pointer]:
+              - /url: https://trademark-policy.openjsf.org/
+            - text: and
+            - link "Trademark List" [ref=e220] [cursor=pointer]:
+              - /url: https://trademark-list.openjsf.org/
+            - text: . Trademarks and logos not indicated on the
+            - link "list of OpenJS Foundation trademarks" [ref=e221] [cursor=pointer]:
+              - /url: https://trademark-list.openjsf.org/
+            - text: are trademarks™ or registered® trademarks of their respective holders. Use of them does not imply any affiliation with or endorsement by them.
+          - paragraph [ref=e222]:
+            - link "OpenJS Foundation" [ref=e223] [cursor=pointer]:
+              - /url: https://openjsf.org/
+            - link "AI Coding Assistants Policy" [ref=e225] [cursor=pointer]:
+              - /url: https://ai-coding-assistants-policy.openjsf.org/
+            - link "Bylaws" [ref=e227] [cursor=pointer]:
+              - /url: https://bylaws.openjsf.org/
+            - link "Code of Conduct" [ref=e229] [cursor=pointer]:
+              - /url: https://code-of-conduct.openjsf.org/
+            - link "Cookie Policy" [ref=e231] [cursor=pointer]:
+              - /url: https://www.linuxfoundation.org/cookies/
+            - link "Privacy Policy" [ref=e233] [cursor=pointer]:
+              - /url: https://privacy-policy.openjsf.org/
+            - link "Security Policy" [ref=e235] [cursor=pointer]:
+              - /url: https://github.com/nodejs/node/security/policy
+            - link "Terms of Use" [ref=e237] [cursor=pointer]:
+              - /url: https://terms-of-use.openjsf.org/
+            - link "Trademark List" [ref=e239] [cursor=pointer]:
+              - /url: https://trademark-list.openjsf.org/
+            - link "Trademark Policy" [ref=e241] [cursor=pointer]:
+              - /url: https://trademark-policy.openjsf.org/
+  - alert [ref=e243]
