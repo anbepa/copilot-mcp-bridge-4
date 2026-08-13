@@ -6,6 +6,13 @@
  *   Turno 2 : resultados agregados  →  Copilot devuelve más plan o DONE
  *
  * Objetivo de diseño: 2-4 turnos por tarea, no 20-30.
+ *
+ * MODO CHAT (runChat): el mismo bucle, pero cuando una tarea termina (done/ask/
+ * budget/parse_error) NO se cierra el proceso: se pide al usuario un nuevo
+ * mensaje por la terminal y se reinyecta como siguiente tarea, reutilizando el
+ * mismo hilo de Copilot para mantener el contexto conversacional. El presupuesto
+ * de turnos se reinicia por cada mensaje del usuario, para que el chat pueda
+ * durar indefinidamente sin agotarse tras la primera tarea.
  */
 import { parseReply, renderBlock } from '../protocol/blocks.mjs';
 import { validatePlan, validateAction } from '../protocol/validate.mjs';
@@ -36,20 +43,103 @@ export class Orchestrator {
       defaultServer: Object.keys(host.clients)[0] ?? [...host.clients.keys()][0]
     });
     this.transcript = [];
+    /** Se pone a true en cuanto el primer mensaje viaja a Copilot (con su adjunto). */
+    this.bootstrapped = false;
   }
 
+  /**
+   * Ejecuta UNA tarea de principio a fin (comportamiento clásico).
+   * Firma pública estable: la usan el CLI (`run`) y los tests E2E.
+   */
   async run(task) {
+    return this.runTask(String(task));
+  }
+
+  /**
+   * MODO CHAT: REPL conversacional. Ejecuta una tarea, y al terminar pide al
+   * usuario el siguiente mensaje mediante `promptUser()`. Continúa hasta que el
+   * usuario pida salir (o `promptUser` devuelva null/"").
+   *
+   * @param {object}   opts
+   * @param {string}  [opts.firstTask]  Primer mensaje (si ya se conoce). Si falta, se pide.
+   * @param {() => Promise<string|null>} opts.promptUser  Devuelve el próximo mensaje del usuario.
+   * @returns {Promise<{status:string, tasks:number, budget:object, transcript:Array}>}
+   */
+  async runChat({ firstTask = null, promptUser }) {
+    if (typeof promptUser !== 'function') {
+      throw new Error('runChat requiere una función promptUser()');
+    }
+
+    let tasks = 0;
+    let lastStatus = 'idle';
+    const allFilesChanged = new Set();
+
+    // Primer mensaje: el pasado por parámetro o, si no, pedido al usuario.
+    let task = firstTask != null ? String(firstTask).trim() : await this.#nextUserMessage(promptUser);
+
+    while (task) {
+      tasks++;
+      // Cada mensaje del usuario arranca con presupuesto de turnos fresco.
+      // El coste real (bytes/tiempo) sí es acumulativo si el config lo define,
+      // pero los turnos se renuevan para no "morir" tras la primera respuesta.
+      this.budget = new Budget(this.config.budget);
+      this.executor.budget = this.budget;
+
+      const res = await this.runTask(task);
+      lastStatus = res.status;
+      for (const f of res.filesChanged) allFilesChanged.add(f);
+
+      // Si el modelo pidió una decisión (ask) y estamos en interactivo, runTask
+      // ya la resolvió inline. Aquí solo encadenamos el siguiente mensaje libre.
+      task = await this.#nextUserMessage(promptUser);
+    }
+
+    log.info('Sesión de chat finalizada.');
+    return {
+      status: lastStatus,
+      tasks,
+      filesChanged: [...allFilesChanged],
+      budget: this.budget.summary(),
+      transcript: this.transcript
+    };
+  }
+
+  /** Pide el siguiente mensaje; normaliza salidas y comandos de salida. */
+  async #nextUserMessage(promptUser) {
+    const raw = await promptUser();
+    const trimmed = (raw ?? '').trim();
+    if (!trimmed) return null;
+    if (/^(salir|exit|quit|q|:q|stop|terminar)$/i.test(trimmed)) return null;
+    return trimmed;
+  }
+
+  /**
+   * Bucle de una sola tarea. Devuelve el resultado en lugar de terminar el
+   * proceso, para que `runChat` pueda encadenar tareas.
+   */
+  async runTask(task) {
     const defaultServer = [...this.host.clients.keys()][0];
     this.executor.defaultServer = defaultServer;
 
-    let message = buildBootstrapPrompt({
-      task,
-      toolCatalog: this.host.catalogForPrompt(),
-      contextPack: this.contextPack.pack,
-      roots: this.roots,
-      attachmentName: this.contextPack.attachmentName
-    });
-    let attachment = this.contextPack.attachmentPath ?? null;
+    let message;
+    let attachment = null;
+    // El bootstrap (contrato + catálogo + context pack) solo se envía la primera
+    // vez. En mensajes posteriores del chat, el hilo ya tiene el contrato: basta
+    // con reinyectar la nueva instrucción del usuario para ahorrar tokens/turnos.
+    if (!this.bootstrapped) {
+      message = buildBootstrapPrompt({
+        task,
+        toolCatalog: this.host.catalogForPrompt(),
+        contextPack: this.contextPack.pack,
+        roots: this.roots,
+        attachmentName: this.contextPack.attachmentName
+      });
+      attachment = this.contextPack.attachmentPath ?? null;
+      this.bootstrapped = true;
+    } else {
+      message = buildUserReplyPrompt(task);
+    }
+
     let repairs = 0;
     const filesChanged = new Set();
 

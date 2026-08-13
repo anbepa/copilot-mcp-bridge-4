@@ -58,7 +58,7 @@ ${color.bold('COMANDOS')}
   login                     Inicia sesión y VERIFICA que la sesión persiste
   session                   Comprueba si la sesión guardada sigue siendo válida
   pack   --task "..."       Compila y muestra el Context Pack (sin llamar a Copilot)
-  run    [--task "..."]     Modo AGENTE conversacional (por defecto). --once = una tarea y salir
+  run    --task "..."       Ejecuta una tarea completa
   chat   [--task "..."]     Modo AGENTE conversacional: escribe en lenguaje natural, turno a turno
 
 ${color.bold('OPCIONES DE run')}
@@ -266,16 +266,7 @@ async function pack() {
   process.stdout.write(JSON.stringify(res.stats, null, 2) + '\n');
 }
 
-// `run` ahora abre por defecto el CHAT INTERACTIVO tipo agente (como Copilot en
-// VS Code): el --task es la tarea inicial y luego sigues conversando turno a
-// turno. Para el comportamiento clásico "una tarea y salir" usa --once.
 async function run() {
-  const once = argv.includes('--once');
-  if (once) return runOnce();
-  return chat();
-}
-
-async function runOnce() {
   let task = flag('task');
   if (!task || task === true) throw new Error('Falta --task "descripción de la tarea"');
 

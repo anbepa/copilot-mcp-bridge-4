@@ -14,6 +14,7 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
+import { spawnSync } from 'node:child_process';
 import { SEL, SEL_FALLBACK, MODEL_GROUP } from './selectors.mjs';
 import { log, color } from '../log.mjs';
 
@@ -26,16 +27,65 @@ export class PlaywrightDriver {
     this.modelSelected = false;
   }
 
+  // Instala Playwright (paquete npm + navegador Chromium) en caliente y devuelve { chromium }.
+  async #autoInstallPlaywright() {
+    const run = (cmd, args) => {
+      log.info(color.bold(`  ↻ ${cmd} ${args.join(' ')}`));
+      const r = spawnSync(cmd, args, {
+        stdio: 'inherit',
+        cwd: process.cwd(),
+        shell: process.platform === 'win32'
+      });
+      if (r.status !== 0) {
+        throw new Error(`Falló "${cmd} ${args.join(' ')}" (código ${r.status ?? 'desconocido'}).`);
+      }
+    };
+
+    log.warn('Playwright no está instalado → intentando instalarlo automáticamente…');
+    try {
+      // 1) Paquete npm (idempotente si ya estuviera a medias).
+      run('npm', ['install', 'playwright']);
+      // 2) Binario del navegador Chromium.
+      run('npx', ['--yes', 'playwright', 'install', 'chromium']);
+    } catch (e) {
+      throw new Error(
+        'No se pudo instalar Playwright automáticamente: ' + e.message + '\n' +
+          'Instálalo a mano:\n' +
+          '   npm install playwright\n' +
+          '   npx playwright install chromium\n' +
+          '(o desactiva la autoinstalación con PLAYWRIGHT_NO_AUTOINSTALL=1)'
+      );
+    }
+
+    // Reintentar el import ya con el paquete disponible.
+    try {
+      const mod = await import('playwright');
+      log.info(color.bold('  ✓ Playwright instalado correctamente.'));
+      return mod.chromium;
+    } catch (e) {
+      throw new Error(
+        'Playwright se instaló pero no se pudo importar: ' + e.message
+      );
+    }
+  }
+
   async init({ loginOnly = false } = {}) {
     let chromium;
     try {
       ({ chromium } = await import('playwright'));
     } catch {
-      throw new Error(
-        'Playwright no está instalado. Ejecuta:\n' +
-          '   npm install playwright\n' +
-          '   npx playwright install chromium'
-      );
+      // Autoinstalación: si Playwright falta, lo instalamos y reintentamos.
+      const autoOff =
+        this.cfg?.autoInstall === false ||
+        process.env.PLAYWRIGHT_NO_AUTOINSTALL === '1';
+      if (autoOff) {
+        throw new Error(
+          'Playwright no está instalado. Ejecuta:\n' +
+            '   npm install playwright\n' +
+            '   npx playwright install chromium'
+        );
+      }
+      chromium = await this.#autoInstallPlaywright();
     }
 
     if (this.cfg.cdpEndpoint) {
